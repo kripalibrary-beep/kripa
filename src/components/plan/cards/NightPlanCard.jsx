@@ -3,7 +3,8 @@ import PlanCard from "./PlanCard";
 
 export default function NightPlanCard() {
   return (
-    <PlanCard highlighted={true}>
+    // We add border-none to override any default borders
+    <PlanCard highlighted={false} className="border-none shadow-none"> 
       <p className="text-xs text-gray-400 font-medium mb-1">Duration</p>
 
       <div className="flex items-baseline gap-1 mb-1">

@@ -13,13 +13,14 @@ export default function Navbar() {
     <nav className="w-full h-[81px] flex items-center justify-between bg-white px-[77px] border-b border-gray-100">
       {/* Logo Section */}
       <div className="flex items-center gap-3 shrink-0">
-        <div className="w-14 h-19 flex items-center justify-center overflow-hidden pt-0">
+
+        <Link to="/" className="w-14 h-19 flex items-center justify-center overflow-hidden pt-0 cursor-pointer">
           <img
             src={logo}
             alt="Kripa Library Logo"
             className="w-full h-full object-contain scale-150"
           />
-        </div>
+        </Link>
 
 
         <Link to="/" className="cursor-pointer">
