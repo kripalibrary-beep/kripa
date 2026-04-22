@@ -1,5 +1,6 @@
 import libraryBg from "../assets/library-bg.png";
 // import Navbar from "./Navbar"; // Make sure the path to your new file is correct
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   return (
@@ -26,9 +27,13 @@ export default function HeroSection() {
             Your peaceful space to Read, Study & Succeed.
           </p>
 
-          <button className="flex items-center gap-2 bg-white text-black font-normal text-[20px] px-8 py-3.5 rounded-full border-0 hover:bg-gray-100 transition-all shadow-md cursor-pointer">
-            Become a Member <span className="text-xl leading-none">›</span>
-          </button>
+          
+
+          <Link to="/contact">
+            <button className="flex items-center gap-2 bg-white text-black font-normal text-[20px] px-8 py-3.5 rounded-full border-0 hover:bg-gray-100 transition-all shadow-md cursor-pointer">
+              Become a Member <span className="text-xl leading-none">›</span>
+            </button>
+          </Link>
         </div>
       </div>
     </div>
