@@ -20,33 +20,22 @@ export default function Contactsection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // --- 2 Minute Rate Limiting ---
-    const COOLDOWN = 2 * 60 * 1000;
-    const lastSubmit = localStorage.getItem("kripa_last_submit");
-    const now = Date.now();
-
-    if (lastSubmit && (now - parseInt(lastSubmit)) < COOLDOWN) {
-      const remaining = Math.ceil((COOLDOWN - (now - parseInt(lastSubmit))) / 1000);
-      alert(`Please wait ${remaining} seconds before submitting again.`);
-      return;
-    }
-
     setLoading(true);
+    
     try {
       const scriptURL = import.meta.env.VITE_SCRIPT_URL;
-      //  import.meta.env.VITE_SCRIPT_URL; // Your Google App Script URL
+      
+      // FIXED: Removed the 'headers' object entirely.
+      // This sends the JSON string as plain text, bypassing the CORS preflight error!
       await fetch(scriptURL, {
         method: 'POST',
-        mode: 'no-cors', // Essential for Google Scripts
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
-      localStorage.setItem("kripa_last_submit", Date.now().toString());
       alert('Query submitted successfully!');
       setFormData({ name: "", email: "", phone: "", interestedIn: "Plans", message: "" });
     } catch (error) {
+      console.error(error);
       alert('Something went wrong, please try again.');
     } finally {
       setLoading(false);

@@ -68,7 +68,7 @@ const ContactUs = () => {
             <Navbar />
 
             {/* --- Hero & Form Section --- */}
-         
+
             {/* --- Map and Info Section --- */}
             <section className="bg-gray-50 py-16 px-6">
                 <div className="max-w-6xl mx-auto">
@@ -99,14 +99,14 @@ const ContactUs = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-gray-400 text-xs mb-2 uppercase tracking-widest font-bold">Phone Number</h3>
-                                    <p className="font-semibold text-gray-800 text-xl">9354610893</p>
+                                    <p className="font-semibold text-gray-800 text-xl"> 7838004416</p>
                                 </div>
                             </div>
 
                             {/* Social Icons */}
                             <div className="grid grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-100">
-                                <SocialLink href="https://wa.me/919354610893" icon={whatsappIcon} label="WhatsApp" />
-                                <SocialLink href="tel:9354610893" icon={phoneIcon} label="Phone" />
+                                <SocialLink href="https://wa.me/917838004416?text=Hi" icon={whatsappIcon} label="WhatsApp" />
+                               <SocialLink href="tel:7838004416" icon={phoneIcon} label="Phone" />
                                 <SocialLink href="https://www.instagram.com/kripa_library/" icon={instagramIcon} label="Instagram" />
                                 <SocialLink href="https://www.facebook.com/p/Kripa-Library-Mandawali-61581788636814/" icon={facebookIcon} label="Facebook" />
                             </div>
@@ -116,9 +116,11 @@ const ContactUs = () => {
                         <div className="w-full h-[400px] bg-gray-200 rounded-[30px] shadow-sm overflow-hidden">
                             <iframe
                                 title="Kripa Library Location"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.261947230419!2d77.29177217550042!3d28.621908475670062!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfb63892330a3%3A0xc367611f77e6f8b5!2sKripa%20Library!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.925184285888!2d77.2944611!3d28.6291029!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cf599573cea1d%3A0x621966c612f07566!2sKripa%20Library!5e0!3m2!1sen!2sin!4v1713812000000!5m2!1sen!2sin"
                                 className="w-full h-full border-0"
+                                allowFullScreen=""
                                 loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
                             ></iframe>
                         </div>
                     </div>
