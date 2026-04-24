@@ -15,6 +15,20 @@ export default function Contactsection() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    // --- Phone Number Logic ---
+    if (name === "phone") {
+      // Use Regex to remove any character that is NOT a digit (\D)
+      const numericValue = value.replace(/\D/g, "");
+      
+      // Optional: Limit to 10 digits
+      if (numericValue.length <= 10) {
+        setFormData((prev) => ({ ...prev, [name]: numericValue }));
+      }
+      return; // Stop execution here for the phone field
+    }
+
+    // Default behavior for other fields
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -25,8 +39,7 @@ export default function Contactsection() {
     try {
       const scriptURL = import.meta.env.VITE_SCRIPT_URL;
       
-      // FIXED: Removed the 'headers' object entirely.
-      // This sends the JSON string as plain text, bypassing the CORS preflight error!
+      // Sending JSON as plain text to bypass CORS preflight
       await fetch(scriptURL, {
         method: 'POST',
         body: JSON.stringify(formData)
@@ -100,7 +113,7 @@ export default function Contactsection() {
 
             <div className="flex flex-col md:flex-row gap-4">
               <input
-                type="tel"
+                type="tel" // Opens numeric keypad on mobile
                 name="phone"
                 placeholder="Enter your Mobile No."
                 value={formData.phone}
