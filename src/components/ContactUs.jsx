@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import Contactsection from "./Contactsection";
-
+import ContactSection from "./ContactSection";
 import whatsappIcon from "../assets/whatsapp.png";
 import phoneIcon from "../assets/phone.png";
 import instagramIcon from "../assets/instagram.png";
@@ -129,7 +128,7 @@ const ContactUs = () => {
 
 
 
-            <Contactsection />
+           <ContactSection />
 
             <Footer />
         </div>
