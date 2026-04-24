@@ -7,7 +7,7 @@ import PremiumFacilities from "./components/PremiumFacilities";
 import ContactSection from "./components/ContactSection";
 import Testimonials from "./components/Testimonials";
 import ContactUs from "./components/ContactUs"; // Import the new file
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar"; // Import the Navbar component
 
 // import ContactUs from "./components/contactus";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
-import Footer from "./footer";
+import Footer from "./Footer";
 import ContactSection from "./ContactSection";
 import whatsappIcon from "../assets/whatsapp.png";
 import phoneIcon from "../assets/phone.png";
