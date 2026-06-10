@@ -1,27 +1,25 @@
 import React from 'react';
 
 // Import images...
-import abhinavImg from '../assets/abhinav1.jpg';
-import pinkyImg from '../assets/pinky.jpg';
-import sitaImg from '../assets/sita.jpg';
+import abhinavImg from '../../assets/abhinav1.jpg';
+import pinkyImg from '../../assets/pinky.jpg';
+import sitaImg from '../../assets/sita.jpg';
 
 const TestimonialCard = ({ name, role, text, image, stars = 5 }) => {
   return (
-    /* FIXED: Swapped w-[380px] for w-full max-w-[380px] so cards scale down fluidly on smaller viewports. */
-    /* FIXED: Adjusted height to h-auto or responsive heights so text wrapping on mobile doesn't overflow the container. */
-    <div className="relative flex flex-col bg-white rounded-[32px] shadow-lg overflow-hidden w-full max-w-[380px] min-h-[420px] sm:h-[420px] border border-gray-100 mx-auto transition-transform hover:scale-[1.02] duration-300">
+    /* FIXED: Removed rigid w-[380px] and used max-w-[380px] with w-full so it shrinks seamlessly on tiny screens */
+    <div className="relative flex flex-col bg-white rounded-[32px] shadow-lg overflow-hidden w-full max-w-[380px] h-[440px] sm:h-[420px] border border-gray-100 mx-auto transition-transform hover:scale-[1.02] duration-300">
       
       {/* Top Section - Text */}
       <div className="p-6 sm:p-8 pb-4 flex-grow">
-        {/* FIXED: Removed arbitrary non-tailwind class 'text-normal' and fixed font utility usage */}
-        <p className="text-gray-700 text-[14px] sm:text-[15px] leading-relaxed font-sans">
-          "{text}"
+        <p className="text-black text-[14px] sm:text-[15px] leading-relaxed font-sans">
+          {text}
         </p>
       </div>
 
       {/* Avatar - Positioned to overlap the wave */}
       <div className="relative z-20 px-6 sm:px-8 flex">
-        <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100 shrink-0">
+        <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
           <img 
             src={image} 
             alt={name} 
@@ -34,7 +32,7 @@ const TestimonialCard = ({ name, role, text, image, stars = 5 }) => {
       </div>
 
       {/* Bottom Section - Identity & Wave */}
-      <div className="relative -mt-10 sm:-mt-12 pt-12 sm:pt-14 pb-6 sm:pb-8 px-6 sm:px-8 bg-gradient-to-br from-[#A5C9FD] via-[#6395F9] to-[#3B82F6]">
+      <div className="relative -mt-10 sm:relative sm:-mt-12 pt-12 sm:pt-14 pb-6 sm:pb-8 px-6 sm:px-8 bg-gradient-to-br from-[#A5C9FD] via-[#6395F9] to-[#3B82F6]">
         {/* SVG Wave */}
         <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] transform -translate-y-[98%]">
           <svg 
@@ -49,13 +47,12 @@ const TestimonialCard = ({ name, role, text, image, stars = 5 }) => {
           </svg>
         </div>
 
-        {/* FIXED: Stack elements vertically on narrow screens to prevent star overlapping */}
         <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 sm:gap-0 relative z-10">
           <div>
             <h3 className="text-black text-xl sm:text-2xl font-bold tracking-tight">
               {name}
             </h3>
-            <p className="text-white text-xs sm:text-sm font-medium mt-0.5">
+            <p className="text-white text-xs sm:text-sm font-medium mt-0.5 sm:mt-1">
               {role}
             </p>
           </div>
@@ -79,7 +76,7 @@ const TestimonialCard = ({ name, role, text, image, stars = 5 }) => {
   );
 };
 
-export default function Testimonials() {
+export default function StudentsAchievements() {
   const testimonials = [
     {
       name: "Abhinav Jha",
@@ -102,23 +99,21 @@ export default function Testimonials() {
   ];
 
   return (
-    <div className="w-full bg-white py-12 md:py-20 px-4 sm:px-6 md:px-8 font-sans overflow-x-hidden">
+    <section className="w-full bg-white py-10 md:py-16 px-4">
       <div className="w-full max-w-[1298px] mx-auto">
         
-        {/* Header Section */}
-        {/* FIXED: Changed leading-none to leading-tight to ensure multiline header clarity on mobile viewports */}
-        <div className="flex flex-col items-center text-center gap-3 mb-10 md:mb-[41px] max-w-[500px] mx-auto">
+        {/* FIXED: Changed leading-none to leading-tight or custom classes so line-height doesn't collapse and overlap long titles */}
+        <div className="flex flex-col items-center text-center gap-3 mb-10 md:mb-[50px] mx-auto max-w-[550px]">
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-black leading-tight m-0">
-            Testimonials
+            Students Achievements
           </h2>
-          <p className="text-sm sm:text-[15px] font-normal text-gray-500 leading-normal m-0">
-            See what our users say about us.
+          <p className="text-sm sm:text-[15px] font-normal text-gray-600 leading-normal m-0">
+            A track record of proven success.
           </p>
         </div>
 
-        {/* Cards Grid */}
-        {/* FIXED: Made the gap-x responsive: smaller gap on smaller monitors, widening up to exactly 79px on xl screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-12 gap-x-6 xl:gap-x-[79px] justify-items-center w-full">
+        {/* Responsive Grid display */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10 justify-items-center">
           {testimonials.map((item, index) => (
             <TestimonialCard 
               key={index}
@@ -129,8 +124,7 @@ export default function Testimonials() {
             />
           ))}
         </div>
-        
       </div>
-    </div>
+    </section>
   );
 }
