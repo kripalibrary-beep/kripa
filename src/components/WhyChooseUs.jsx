@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 
 // Icons
-import communityIcon from "../assets/community.png";
-import locationIcon from "../assets/location.png";
-import peacefulIcon from "../assets/peaceful.png";
-import securityIcon from "../assets/security.png";
+const communityIcon = "https://ik.imagekit.io/manish07/assets/community.png";
+const locationIcon = "https://ik.imagekit.io/manish07/assets/location.png";
+const peacefulIcon = "https://ik.imagekit.io/manish07/assets/peaceful.png";
+const securityIcon = "https://ik.imagekit.io/manish07/assets/security.png";
 
 // New Slide Images
-import imgFour from "../assets/four.jpg";
-import imgThree from "../assets/three.png";
-import imgTwo from "../assets/two.jpg";
+const imgFour = "https://ik.imagekit.io/manish07/assets/four.jpg";
+const imgThree = "https://ik.imagekit.io/manish07/assets/three.png";
+const imgTwo = "https://ik.imagekit.io/manish07/assets/two.jpg";
 
 const FEATURES = [
   {

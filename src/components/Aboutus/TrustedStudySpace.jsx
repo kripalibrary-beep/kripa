@@ -1,9 +1,9 @@
 import React from "react";
 // Replace these with the actual paths to your logo images!
-import studentsIcon from "../../assets/About/students-icon.png";
-import selectionsIcon from "../../assets/About/selections-icon.png";
-import availabilityIcon from "../../assets/About/availability-icon.png";
-import ratingIcon from "../../assets/About/rating-icon.png";
+const studentsIcon = "https://ik.imagekit.io/manish07/assets/About/students-icon.png";
+const selectionsIcon = "https://ik.imagekit.io/manish07/assets/About/selections-icon.png";
+const availabilityIcon = "https://ik.imagekit.io/manish07/assets/About/availability-icon.png";
+const ratingIcon = "https://ik.imagekit.io/manish07/assets/About/rating-icon.png";
 
 export default function TrustedStudySpace() {
   return (

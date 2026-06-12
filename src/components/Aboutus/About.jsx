@@ -1,6 +1,6 @@
 import React from "react";
 // Replace this import path with the actual path and name of your image!
-import aboutBanner from "../../assets/About/aboutus.jpeg";
+const aboutBanner = "https://ik.imagekit.io/manish07/assets/About/aboutus.jpeg";
 
 // Import sub-components
 import OurStory from "./OurStory.jsx";

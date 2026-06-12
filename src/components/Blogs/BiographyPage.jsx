@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { IKImage, IKContext } from 'imagekitio-react';
 
 // ─── ImageKit Config ──────────────────────────────────────────────────────────
@@ -103,11 +103,11 @@ function BiographyDetail({ bio, onBack }) {
         <div className="w-full bg-white border border-[#D9D9D9] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-sm">
 
           {/* Hero Image */}
-          <div className="w-full h-[240px] sm:h-[320px] md:h-[380px] relative overflow-hidden">
+          <div className="w-full h-[240px] sm:h-[320px] md:h-[380px] relative overflow-hidden bg-slate-50 p-4 flex items-center justify-center">
             <BioImage
               path={bio.image}
               alt={bio.name}
-              className="w-full h-full object-cover object-top"
+              className="max-w-full max-h-full object-cover rounded-[10%] shadow-md"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-6 sm:pb-8">
@@ -182,11 +182,11 @@ function BiographyCard({ bio, onClick }) {
       className="w-full flex flex-col sm:flex-row bg-white border border-[#D9D9D9] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
     >
       {/* ImageKit image */}
-      <div className="w-full sm:w-[180px] md:w-[200px] h-[180px] sm:h-auto shrink-0 overflow-hidden">
+      <div className="w-full sm:w-[180px] md:w-[200px] h-[180px] sm:h-auto shrink-0 overflow-hidden bg-slate-50 p-2 flex items-center justify-center">
         <BioImage
           path={bio.image}
           alt={bio.name}
-          className="w-full h-full object-cover object-top"
+          className="max-w-full max-h-full object-cover rounded-[10%] shadow-sm"
         />
       </div>
 
@@ -218,10 +218,18 @@ function BiographyCard({ bio, onClick }) {
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function BiographyPage() {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedId = searchParams.get('id');
+
+  const selected = selectedId ? BIOGRAPHIES.find(b => b.id === Number(selectedId)) : null;
+
+  // Scroll to top when selection changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedId]);
 
   if (selected) {
-    return <BiographyDetail bio={selected} onBack={() => setSelected(null)} />;
+    return <BiographyDetail bio={selected} onBack={() => setSearchParams({})} />;
   }
 
   return (
@@ -249,7 +257,7 @@ export default function BiographyPage() {
             <BiographyCard
               key={bio.id}
               bio={bio}
-              onClick={() => setSelected(bio)}
+              onClick={() => setSearchParams({ id: bio.id })}
             />
           ))}
         </div>

@@ -1,19 +1,19 @@
 import React, { useRef } from "react";
 
 // Existing Imports
-import acImg from "../assets/facilities/ac.png";
-import wifiImg from "../assets/facilities/wifi1.png";
-import lockerImg from "../assets/facilities/lockmain.jpg";
-import waterImg from "../assets/facilities/water1.png";
+const acImg = "https://ik.imagekit.io/manish07/assets/facilities/ac.png";
+const wifiImg = "https://ik.imagekit.io/manish07/assets/facilities/wifi1.png";
+const lockerImg = "https://ik.imagekit.io/manish07/assets/facilities/lockmain.jpg";
+const waterImg = "https://ik.imagekit.io/manish07/assets/facilities/water1.png";
 
 // New Image Imports
-import beverageImg from "../assets/Beverages.png";
-import lunchImg from "../assets/lunch.png";
-import premiumSeatsImg from "../assets/Premium Seats.png";
-import spaciousImg from "../assets/Spacious.jpg";
-import newspaperImg from "../assets/Newspaper.png";
-import restImg from "../assets/bed.png";
-import cctvImg from "../assets/Rest.png"; // Note: Check if this asset path should be cctv.png or security.png!
+const beverageImg = "https://ik.imagekit.io/manish07/assets/Beverages.png";
+const lunchImg = "https://ik.imagekit.io/manish07/assets/lunch.png";
+const premiumSeatsImg = "https://ik.imagekit.io/manish07/assets/Premium Seats.png";
+const spaciousImg = "https://ik.imagekit.io/manish07/assets/Spacious.jpg";
+const newspaperImg = "https://ik.imagekit.io/manish07/assets/Newspaper.png";
+const restImg = "https://ik.imagekit.io/manish07/assets/bed.png";
+const cctvImg = "https://ik.imagekit.io/manish07/assets/Rest.png"; // Note: Check if this asset path should be cctv.png or security.png!
 
 const facilitiesData = [
   { title: "Fully Air Conditioned", desc: "Separate AC for each wing.", img: acImg },

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../assets/logo2.png";
+const logo = "https://ik.imagekit.io/manish07/assets/logo2.png";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Navbar() {

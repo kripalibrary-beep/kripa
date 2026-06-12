@@ -1,5 +1,5 @@
 import React from 'react';
-import blogBanner from '../../assets/Blog/blog-banner.png'; // Replace with your actual banner image path
+const blogBanner = "https://ik.imagekit.io/manish07/assets/Blog/blog-banner.png"; // Replace with your actual banner image path
 import SmartStudyTips from './SmartStudyTips.jsx'; // Import the SmartStudyTips component
 import RecentPosts from './RecentPosts.jsx'; // Import the RecentPosts component
 

@@ -1,7 +1,7 @@
 import React from "react";
 // Replace these with the actual paths to your images
-import studyImage1 from "../../assets/About/study-space-1.jpg"; 
-import studyImage2 from "../../assets/About/study-space-2.jpg"; 
+const studyImage1 = "https://ik.imagekit.io/manish07/assets/About/study-space-1.jpg"; 
+const studyImage2 = "https://ik.imagekit.io/manish07/assets/About/study-space-2.jpg"; 
 
 export default function StudySpaceImages() {
   return (

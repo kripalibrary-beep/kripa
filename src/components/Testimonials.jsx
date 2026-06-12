@@ -1,9 +1,9 @@
 import React from 'react';
 
 // Import images...
-import abhinavImg from '../assets/abhinav1.jpg';
-import pinkyImg from '../assets/pinky.jpg';
-import sitaImg from '../assets/sita.jpg';
+const abhinavImg = "https://ik.imagekit.io/manish07/assets/abhinav1.jpg";
+const pinkyImg = "https://ik.imagekit.io/manish07/assets/pinky.jpg";
+const sitaImg = "https://ik.imagekit.io/manish07/assets/sita.jpg";
 
 const TestimonialCard = ({ name, role, text, image, stars = 5 }) => {
   return (

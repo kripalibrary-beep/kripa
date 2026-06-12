@@ -1,128 +1,67 @@
 import React from 'react';
-
-// Import images...
-import abhinavImg from '../../assets/abhinav1.jpg';
-import pinkyImg from '../../assets/pinky.jpg';
-import sitaImg from '../../assets/sita.jpg';
-
-const TestimonialCard = ({ name, role, text, image, stars = 5 }) => {
-  return (
-    /* FIXED: Removed rigid w-[380px] and used max-w-[380px] with w-full so it shrinks seamlessly on tiny screens */
-    <div className="relative flex flex-col bg-white rounded-[32px] shadow-lg overflow-hidden w-full max-w-[380px] h-[440px] sm:h-[420px] border border-gray-100 mx-auto transition-transform hover:scale-[1.02] duration-300">
-      
-      {/* Top Section - Text */}
-      <div className="p-6 sm:p-8 pb-4 flex-grow">
-        <p className="text-black text-[14px] sm:text-[15px] leading-relaxed font-sans">
-          {text}
-        </p>
-      </div>
-
-      {/* Avatar - Positioned to overlap the wave */}
-      <div className="relative z-20 px-6 sm:px-8 flex">
-        <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] rounded-full border-4 border-white shadow-md overflow-hidden bg-gray-100">
-          <img 
-            src={image} 
-            alt={name} 
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=random`;
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Bottom Section - Identity & Wave */}
-      <div className="relative -mt-10 sm:relative sm:-mt-12 pt-12 sm:pt-14 pb-6 sm:pb-8 px-6 sm:px-8 bg-gradient-to-br from-[#A5C9FD] via-[#6395F9] to-[#3B82F6]">
-        {/* SVG Wave */}
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-[0] transform -translate-y-[98%]">
-          <svg 
-            viewBox="0 0 500 150" 
-            preserveAspectRatio="none" 
-            className="relative block w-full h-[50px] sm:h-[70px]"
-          >
-            <path 
-              d="M0.00,49.98 C149.99,150.00 349.89,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" 
-              className="fill-[#A5C9FD]"
-            ></path>
-          </svg>
-        </div>
-
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2 sm:gap-0 relative z-10">
-          <div>
-            <h3 className="text-black text-xl sm:text-2xl font-bold tracking-tight">
-              {name}
-            </h3>
-            <p className="text-white text-xs sm:text-sm font-medium mt-0.5 sm:mt-1">
-              {role}
-            </p>
-          </div>
-          
-          <div className="flex gap-0.5 pb-1">
-            {[...Array(stars)].map((_, i) => (
-              <svg 
-                key={i} 
-                viewBox="0 0 24 24" 
-                width="14" 
-                height="14" 
-                className="fill-orange-400 sm:w-[16px] sm:h-[16px]"
-              >
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-            ))}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
+import deepaImg from '../../assets/Student-achivement/WhatsApp Image 2026-06-10 at 8.49.52 PM.jpeg';
 
 export default function StudentsAchievements() {
-  const testimonials = [
-    {
-      name: "Abhinav Jha",
-      role: "Preparing for UPSC",
-      text: "I am coming here from past one year and there is not a single instance where i found something unusual or complaining about this library, environment is cozy & bit relaxed perfect place for study.",
-      image: abhinavImg,
-    },
-    {
-      name: "Pinky Yadav",
-      role: "Preparing for UPSC",
-      text: "I am preparing for UPSC CSE coming here from last 2 years having great experience. Ambience is peaceful and cozy, such a nice place to study peacefully along with that staff is very cooperative.",
-      image: pinkyImg,
-    },
-    {
-      name: "Sita Choudhary",
-      role: "Data Analytics",
-      text: "The main reason preparing here is the calm and smooth ambience which helps me during my study. It has truly become my go-to place for achieving my daily learning goals.",
-      image: sitaImg,
-    }
-  ];
-
   return (
-    <section className="w-full bg-white py-10 md:py-16 px-4">
-      <div className="w-full max-w-[1298px] mx-auto">
+    <section className="w-full bg-white py-10 md:py-16 px-4 font-sans relative">
+      <div className="w-full max-w-[1000px] mx-auto relative z-10">
         
-        {/* FIXED: Changed leading-none to leading-tight or custom classes so line-height doesn't collapse and overlap long titles */}
-        <div className="flex flex-col items-center text-center gap-3 mb-10 md:mb-[50px] mx-auto max-w-[550px]">
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-black leading-tight m-0">
-            Students Achievements
+        <div className="flex flex-col items-center text-center gap-3 mb-12 md:mb-16 mx-auto max-w-[600px]">
+          <span className="text-blue-600 font-bold tracking-widest uppercase text-xs sm:text-sm">Student Success</span>
+          <h2 className="text-3xl sm:text-4xl md:text-[42px] font-extrabold text-slate-900 leading-tight m-0">
+            Proud Achievement
           </h2>
-          <p className="text-sm sm:text-[15px] font-normal text-gray-600 leading-normal m-0">
-            A track record of proven success.
-          </p>
         </div>
 
-        {/* Responsive Grid display */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-10 justify-items-center">
-          {testimonials.map((item, index) => (
-            <TestimonialCard 
-              key={index}
-              name={item.name}
-              role={item.role}
-              text={item.text}
-              image={item.image}
+        {/* Featured Card */}
+        <div className="flex flex-col md:flex-row bg-white rounded-[32px] sm:rounded-[40px] shadow-xl overflow-hidden border border-slate-100 hover:shadow-2xl transition-shadow duration-500 group">
+          
+          {/* Left: Image */}
+          <div className="w-full md:w-2/5 h-[350px] md:h-auto relative overflow-hidden bg-slate-100 shrink-0">
+            <img 
+              src={deepaImg} 
+              alt="Deepa" 
+              className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
             />
-          ))}
+            {/* Optional overlay gradient for blending */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-80 md:opacity-0 transition-opacity duration-300 md:group-hover:opacity-30"></div>
+            
+            {/* Mobile Badge (Visible on mobile, hides on desktop if needed, or keep for both) */}
+            <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm px-4 py-2 rounded-2xl shadow-lg border border-white/50">
+              <p className="text-blue-700 font-bold text-lg leading-none mb-1">AIR 118</p>
+              <p className="text-slate-600 text-[10px] font-bold uppercase tracking-wider leading-none">NORCET 10</p>
+            </div>
+          </div>
+
+          {/* Right: Content */}
+          <div className="w-full md:w-3/5 p-8 sm:p-12 md:p-16 flex flex-col justify-center relative bg-white">
+            {/* Quote Icon Background */}
+            <svg className="absolute top-6 left-6 sm:top-10 sm:left-10 w-16 sm:w-24 h-16 sm:h-24 text-blue-50 opacity-60 pointer-events-none" fill="currentColor" viewBox="0 0 32 32">
+              <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.896 3.456-8.352 9.12-8.352 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+            </svg>
+
+            <div className="relative z-10">
+              <div className="flex gap-1.5 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-amber-400 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+
+              <p className="text-slate-700 text-lg sm:text-[20px] md:text-[22px] leading-relaxed font-medium mb-10 italic">
+                "Hello everyone I'm Deepa and I've cleared norcet 10 with AIR 118.... during my preparation journey i visited the library and I found a good space and environment for my preparation , I'm thankful."
+              </p>
+
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-t border-slate-100 pt-6">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-1">Deepa</h3>
+                  <p className="text-blue-600 font-semibold text-sm sm:text-base">Cleared NORCET 10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

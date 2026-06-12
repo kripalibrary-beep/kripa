@@ -2,21 +2,21 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 // Blog 1 hero + content images
-import postImg1 from '../../assets/Blog/blog1-inner3.png';
-import blog1Img1 from '../../assets/Blog/blog1-inner1.png';
-import blog1Img2 from '../../assets/Blog/blog1-inner2.png';
-import blog1Img3 from '../../assets/Blog/blog1-inner3.png';
+const postImg1 = "https://ik.imagekit.io/manish07/assets/Blog/blog1-inner3.png";
+const blog1Img1 = "https://ik.imagekit.io/manish07/assets/Blog/blog1-inner1.png";
+const blog1Img2 = "https://ik.imagekit.io/manish07/assets/Blog/blog1-inner2.png";
+const blog1Img3 = "https://ik.imagekit.io/manish07/assets/Blog/blog1-inner3.png";
 
 // Blog 2 hero + content images
-import postImg2 from '../../assets/Blog/blog2-inner2.png';
-import blog2Img1 from '../../assets/Blog/blog2-inner1.png';
-import blog2Img2 from '../../assets/Blog/blog2-inner2.png';
-import blog2Img3 from '../../assets/Blog/blog2-inner3.png';
+const postImg2 = "https://ik.imagekit.io/manish07/assets/Blog/blog2-inner2.png";
+const blog2Img1 = "https://ik.imagekit.io/manish07/assets/Blog/blog2-inner1.png";
+const blog2Img2 = "https://ik.imagekit.io/manish07/assets/Blog/blog2-inner2.png";
+const blog2Img3 = "https://ik.imagekit.io/manish07/assets/Blog/blog2-inner3.png";
 
 // Blog 3 hero + content images
-import postImg3 from '../../assets/Blog/blog3-inner1.png';
-import blog3Img1 from '../../assets/Blog/blog3-inner1.png';
-import blog3Img2 from '../../assets/Blog/blog3-inner2.png';
+const postImg3 = "https://ik.imagekit.io/manish07/assets/Blog/blog3-inner1.png";
+const blog3Img1 = "https://ik.imagekit.io/manish07/assets/Blog/blog3-inner1.png";
+const blog3Img2 = "https://ik.imagekit.io/manish07/assets/Blog/blog3-inner2.png";
 
 const BLOGS = [
   {

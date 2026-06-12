@@ -19,6 +19,7 @@ import PoemsPage from './components/Blogs/PoemsPage';
 import BiographyPage from './components/Blogs/BiographyPage';
 import QuotesPage from './components/Blogs/QuotesPage';
 import MotivationPage from './components/Blogs/MotivationPage';
+import SelfDevelopmentPage from './components/Blogs/SelfDevelopmentPage';
 
 
 
@@ -74,6 +75,7 @@ function App() {
             <Route path="/topics/biography" element={<BiographyPage />} />
             <Route path="/topics/quotes" element={<QuotesPage />} />
             <Route path="/topics/motivation" element={<MotivationPage />} />
+            <Route path="/topics/self-development" element={<SelfDevelopmentPage />} />
 
 
           </Routes>

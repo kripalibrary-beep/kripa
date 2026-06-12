@@ -1,10 +1,11 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const MOTIVATIONS = [
   {
     id: 1,
     title: "Why Today Matters",
+    excerpt: "Every successful person once had a day when they decided to start. That day can be today. Many students postpone their studies, thinking they will work harder tomorrow.",
     content: (
       <>
         <p className="mb-4">
@@ -18,12 +19,13 @@ const MOTIVATIONS = [
         </p>
       </>
     ),
-    imagePath: "/src/assets/Blog/motivation1.png",
+    imagePath: "https://ik.imagekit.io/manish07/assets/Blog/motivation1_new.png",
     imageAlt: "Today matters"
   },
   {
     id: 2,
     title: "One More Hour of Study",
+    excerpt: "There are times when you feel tired and want to stop studying. At that moment, challenge yourself to study for just one more hour.",
     content: (
       <>
         <p className="mb-4">
@@ -40,12 +42,13 @@ const MOTIVATIONS = [
         </p>
       </>
     ),
-    imagePath: "/src/assets/Blog/motivation2.png",
+    imagePath: "https://ik.imagekit.io/manish07/assets/Blog/motivation2_new.png",
     imageAlt: "One more quiet hour"
   },
   {
     id: 3,
     title: "The Power of Consistency",
+    excerpt: "Success is rarely the result of a single day of hard work. It is the result of small efforts repeated every day.",
     content: (
       <>
         <p className="mb-4">
@@ -62,12 +65,13 @@ const MOTIVATIONS = [
         </p>
       </>
     ),
-    imagePath: "/src/assets/Blog/motivation3.png",
+    imagePath: "https://ik.imagekit.io/manish07/assets/Blog/motivation3_new.png",
     imageAlt: "The power of consistency"
   },
   {
     id: 4,
     title: "Winners Don't Quit",
+    excerpt: "Every student faces challenges. Difficult subjects, low scores, and moments of self-doubt are part of the journey.",
     content: (
       <>
         <p className="mb-4">
@@ -84,12 +88,13 @@ const MOTIVATIONS = [
         </p>
       </>
     ),
-    imagePath: "/src/assets/Blog/motivation4.png",
+    imagePath: "https://ik.imagekit.io/manish07/assets/Blog/motivation4_new.png",
     imageAlt: "Winners don't quit"
   },
   {
     id: 5,
     title: "Small Steps, Big Results",
+    excerpt: "Big goals can seem overwhelming. Instead of focusing on the entire journey, focus on the next step.",
     content: (
       <>
         <p className="mb-4">
@@ -106,71 +111,169 @@ const MOTIVATIONS = [
         </p>
       </>
     ),
-    imagePath: "/src/assets/Blog/motivation5.png",
+    imagePath: "https://ik.imagekit.io/manish07/assets/Blog/motivation5_new.png",
     imageAlt: "Small steps, big results"
   }
 ];
 
-export default function MotivationPage() {
-  const navigate = useNavigate();
-
+// ─── Detail View ──────────────────────────────────────────────────────────────
+function MotivationDetail({ motivation, onBack }) {
   return (
-    <div className="w-full min-h-screen bg-[#F8F9FA] py-16 md:py-24 px-4 sm:px-6 lg:px-8 font-sans">
-      <div className="max-w-[1000px] mx-auto">
-        
-        {/* ── BACK BUTTON ── */}
-        <button
-          onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-blue-600 transition-all duration-300 group mb-8 cursor-pointer bg-white px-4 py-2 rounded-full shadow-sm hover:shadow-md"
-        >
-          <span className="text-base font-bold transform group-hover:-translate-x-1 transition-transform duration-300">
-            ←
-          </span>
-          Back
-        </button>
+    <div className="w-full min-h-screen bg-white py-10 md:py-16 px-4 sm:px-6 font-sans">
+      <div className="max-w-[867px] mx-auto">
+        <div className="w-full bg-white border border-[#D9D9D9] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-sm">
 
-        {/* ── HEADER ── */}
-        <div className="mb-12 md:mb-16 border-b border-gray-200/60 pb-6">
-          <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight mb-3">
+          {/* Hero Image */}
+          <div className="w-full h-[240px] sm:h-[320px] md:h-[380px] relative overflow-hidden bg-slate-100">
+            <img
+              src={motivation.imagePath}
+              alt={motivation.imageAlt}
+              className="w-full h-full object-cover object-center"
+              onError={(e) => {
+                e.target.onerror = null; 
+                e.target.src = `https://placehold.co/800x450/e2e8f0/64748b?text=Image+Placeholder+%0A+(${motivation.imageAlt})`;
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 pb-6 sm:pb-8">
+              <span className="inline-block text-xs font-semibold uppercase tracking-widest text-blue-300 mb-2">
+                Motivation
+              </span>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-snug">
+                {motivation.title}
+              </h1>
+            </div>
+          </div>
+
+          {/* Body */}
+          <div className="px-6 sm:px-8 md:px-10 pt-7 pb-10">
+            {/* Back button */}
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-blue-600 transition-colors group mb-7"
+            >
+              <span className="text-base leading-none group-hover:-translate-x-1 transition-transform">←</span>
+              Back to Motivation
+            </button>
+
+            {/* Content */}
+            <div className="text-[15px] sm:text-base text-gray-700 leading-relaxed">
+              {motivation.content}
+            </div>
+
+            {/* Divider */}
+            <hr className="my-8 border-gray-200" />
+
+            {/* Footer CTA */}
+            <div className="rounded-2xl bg-gradient-to-r from-blue-50 to-blue-100 border border-blue-200 p-5 sm:p-7 text-center">
+              <h3 className="text-base font-bold text-blue-900 mb-1">
+                Stay motivated and focused
+              </h3>
+              <p className="text-sm text-blue-700 mb-4">
+                Kripa Library provides the perfect environment to apply these principles and achieve your goals.
+              </p>
+              <button className="px-6 py-2 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 active:scale-95 transition-all">
+                Join Kripa Library →
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── List Card ────────────────────────────────────────────────────────────────
+function MotivationCard({ motivation, onClick }) {
+  return (
+    <div
+      onClick={onClick}
+      className="w-full flex flex-col sm:flex-row bg-white border border-[#D9D9D9] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer group"
+    >
+      {/* Image */}
+      <div className="w-full sm:w-[220px] md:w-[260px] h-[200px] sm:h-auto shrink-0 overflow-hidden bg-slate-50 flex items-center justify-center p-4">
+        <img
+          src={motivation.imagePath}
+          alt={motivation.imageAlt}
+          className="w-full h-full object-contain rounded-xl"
+          onError={(e) => {
+            e.target.onerror = null; 
+            e.target.src = `https://placehold.co/800x450/e2e8f0/64748b?text=Image+Placeholder+%0A+(${motivation.imageAlt})`;
+          }}
+        />
+      </div>
+
+      {/* Content */}
+      <div className="p-5 sm:p-6 md:p-8 flex flex-col justify-between flex-grow">
+        <div>
+          <span className="text-xs font-semibold uppercase tracking-widest text-blue-400 mb-2 block">
             Motivation
-          </h2>
-          <p className="text-gray-500 text-sm sm:text-base font-medium">
-            Find the drive and persistence to keep pushing forward on your journey.
+          </span>
+          <h3 className="font-bold text-xl md:text-2xl text-black leading-snug mb-3 group-hover:text-blue-600 transition-colors">
+            {motivation.title}
+          </h3>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed line-clamp-3">
+            {motivation.excerpt}
           </p>
         </div>
 
-        {/* ── MOTIVATION ARTICLES LIST ── */}
-        <div className="flex flex-col gap-16 md:gap-24">
-          {MOTIVATIONS.map((item) => (
-            <div key={item.id} className="flex flex-col bg-white rounded-[2.5rem] overflow-hidden shadow-sm border border-slate-100/60 hover:shadow-lg transition-shadow duration-300">
-              
-              {/* Image Section */}
-              <div className="w-full bg-slate-50 flex items-center justify-center p-8 border-b border-slate-100">
-                <div className="relative w-full max-w-2xl aspect-video rounded-xl overflow-hidden bg-slate-200 shadow-inner flex items-center justify-center">
-                  <img 
-                    src={item.imagePath} 
-                    alt={item.imageAlt}
-                    className="object-cover w-full h-full"
-                    onError={(e) => {
-                      e.target.onerror = null; 
-                      e.target.src = `https://placehold.co/800x450/e2e8f0/64748b?text=Image+Placeholder+%0A+(${item.imageAlt})`;
-                    }}
-                  />
-                </div>
-              </div>
+        <div className="flex justify-end mt-6">
+          <button className="w-[110px] h-[36px] rounded-full border border-gray-300 text-[13px] font-semibold text-black flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all active:scale-95">
+            Read More
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
-              {/* Content Section */}
-              <div className="p-8 sm:p-10 md:p-12">
-                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-6">
-                  {item.title}
-                </h3>
-                
-                <div className="text-base sm:text-lg text-slate-600 leading-relaxed">
-                  {item.content}
-                </div>
-              </div>
+// ─── Main Page ────────────────────────────────────────────────────────────────
+export default function MotivationPage() {
+  const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedId = searchParams.get('id');
 
-            </div>
+  const selected = selectedId ? MOTIVATIONS.find(m => m.id === Number(selectedId)) : null;
+
+  // Scroll to top when post selection changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedId]);
+
+  if (selected) {
+    return <MotivationDetail motivation={selected} onBack={() => setSearchParams({})} />;
+  }
+
+  return (
+    <div className="w-full min-h-screen bg-[#F8F9FA] py-10 md:py-16 px-4 sm:px-6 font-sans">
+      <div className="max-w-[1000px] mx-auto">
+        
+        {/* Back button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-blue-600 transition-colors group mb-6"
+        >
+          <span className="text-base leading-none group-hover:-translate-x-1 transition-transform">←</span>
+          Back
+        </button>
+
+        {/* Heading */}
+        <div className="mb-10 md:mb-12">
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-black mb-2 leading-tight">
+            Motivation
+          </h2>
+          <p className="text-sm text-gray-500">Find the drive and persistence to keep pushing forward on your journey.</p>
+        </div>
+
+        {/* List */}
+        <div className="flex flex-col gap-6">
+          {MOTIVATIONS.map((motivation) => (
+            <MotivationCard
+              key={motivation.id}
+              motivation={motivation}
+              onClick={() => setSearchParams({ id: motivation.id })}
+            />
           ))}
         </div>
 

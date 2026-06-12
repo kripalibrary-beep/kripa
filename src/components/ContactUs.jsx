@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import ContactSection from "./ContactSection";
-import whatsappIcon from "../assets/whatsapp.png";
-import phoneIcon from "../assets/phone.png";
-import instagramIcon from "../assets/instagram.png";
-import facebookIcon from "../assets/facebook.png";
+const whatsappIcon = "https://ik.imagekit.io/manish07/assets/whatsapp.png";
+const phoneIcon = "https://ik.imagekit.io/manish07/assets/phone.png";
+const instagramIcon = "https://ik.imagekit.io/manish07/assets/instagram.png";
+const facebookIcon = "https://ik.imagekit.io/manish07/assets/facebook.png";
 
-import leftImage from "../assets/left.png";   // person sitting at desk
-import rightImage from "../assets/right.png"; // person standing with laptop
+const leftImage = "https://ik.imagekit.io/manish07/assets/left.png";   // person sitting at desk
+const rightImage = "https://ik.imagekit.io/manish07/assets/right.png"; // person standing with laptop
 
 const ContactUs = () => {
     const [formData, setFormData] = useState({

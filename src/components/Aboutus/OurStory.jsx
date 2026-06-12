@@ -1,6 +1,6 @@
 import React from "react";
 // Replace this import path with the actual path to your image
-import storyImage from "../../assets/About/right.jpg"; 
+const storyImage = "https://ik.imagekit.io/manish07/assets/About/right.jpg"; 
 
 export default function OurStory() {
   return (

@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 // Replace these with your actual image paths for all 8 blogs
-import img1 from '../../assets/Blog/blog1.jpeg';
-import img2 from '../../assets/Blog/blog2.jpeg';
-import img3 from '../../assets/Blog/blog3.jpeg';
-import img4 from '../../assets/Blog/blog4.jpeg';
-import img5 from '../../assets/Blog/blog5.jpeg';
-import img6 from '../../assets/Blog/blog6.jpeg';
-import img7 from '../../assets/Blog/blog7.png'; // Add your 7th image
-import img8 from '../../assets/Blog/blog8.png';   // Add your 8th image   
+const img1 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183346.png";
+const img2 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183217.png";
+const img3 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183246.png";
+const img4 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183252.png";
+const img5 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183257.png";
+const img6 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183302.png";
+const img7 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183318.png"; // Add your 7th image
+const img8 = "https://ik.imagekit.io/manish07/assets/Blog/study-tips/Screenshot_2026-06-11_183324.png";   // Add your 8th image   
+
+
 
 export default function SmartStudyTips() {
   const blogPosts = [
@@ -222,6 +224,8 @@ export default function SmartStudyTips() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardsToShow, setCardsToShow] = useState(3);
   const scrollContainerRef = useRef(null);
+  const modalScrollRef = useRef(null);
+  const leftContentScrollRef = useRef(null);
 
   // ── DYNAMIC BREAKPOINT DETECTOR ──
   useEffect(() => {
@@ -250,6 +254,16 @@ export default function SmartStudyTips() {
     return () => {
       document.body.style.overflow = 'unset';
     };
+  }, [selectedPostId]);
+
+  // Scroll modal back to top when active post changes
+  useEffect(() => {
+    if (modalScrollRef.current) {
+      modalScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    if (leftContentScrollRef.current) {
+      leftContentScrollRef.current.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [selectedPostId]);
 
   const maxIndex = Math.max(0, blogPosts.length - cardsToShow);
@@ -314,11 +328,11 @@ export default function SmartStudyTips() {
                 className="w-full sm:w-1/2 lg:w-1/3 shrink-0 flex flex-col px-2 sm:px-3 snap-start"
               >
                 {/* Image Container Card */}
-                <div className="w-full h-[200px] sm:h-[220px] lg:h-[240px] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-sm mb-4 bg-gray-50 shrink-0">
+                <div className="w-full h-[200px] sm:h-[220px] lg:h-[240px] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-sm mb-4 bg-white shrink-0 p-2">
                   <img 
                     src={post.image} 
                     alt={post.title} 
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                    className="w-full h-full object-contain rounded-[18px] sm:rounded-[22px] transition-transform duration-500 hover:scale-105"
                   />
                 </div>
                 
@@ -387,7 +401,8 @@ export default function SmartStudyTips() {
         >
           {/* Modal Container */}
           <div 
-            className="w-full max-w-[1400px] h-full max-h-[92vh] bg-[#FAFAFA] rounded-[32px] shadow-2xl overflow-y-auto scrollbar-none relative flex flex-col"
+            ref={modalScrollRef}
+            className="w-full max-w-[1400px] h-full max-h-[92vh] bg-[#FAFAFA] rounded-[32px] shadow-2xl overflow-y-auto lg:overflow-hidden scrollbar-none relative flex flex-col"
             onClick={(e) => e.stopPropagation()} 
           >
             
@@ -404,19 +419,22 @@ export default function SmartStudyTips() {
             </div>
 
             {/* Modal Content Split */}
-            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 px-8 pb-12 sm:px-12">
+            <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 px-8 pb-12 sm:px-12 lg:h-0 lg:flex-grow lg:pb-8">
               
               {/* Left Content Area (Blog Detail) */}
-              <div className="lg:w-2/3 bg-white p-8 sm:p-12 rounded-[32px] shadow-sm border border-gray-200">
+              <div 
+                ref={leftContentScrollRef}
+                className="lg:w-2/3 bg-white p-8 sm:p-12 rounded-[32px] shadow-sm border border-gray-200 lg:h-full lg:overflow-y-auto scrollbar-none"
+              >
                 <h1 className="text-3xl sm:text-4xl font-bold text-black mb-8 leading-tight">
                   {selectedPost.title}
                 </h1>
                 
-                <div className="w-full h-[300px] sm:h-[450px] mb-10 rounded-2xl overflow-hidden bg-gray-100 shadow-inner">
+                <div className="w-full h-[300px] sm:h-[450px] mb-10 rounded-2xl overflow-hidden bg-white shadow-inner p-4">
                    <img 
                      src={selectedPost.image} 
                      alt={selectedPost.title} 
-                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                     className="w-full h-full object-contain rounded-xl transition-transform duration-700 hover:scale-105"
                    />
                 </div>
 
@@ -426,8 +444,8 @@ export default function SmartStudyTips() {
               </div>
 
               {/* Right Sidebar Area (Popular Posts) */}
-              <div className="lg:w-1/3">
-                <div className="bg-white p-8 sm:p-10 rounded-[32px] shadow-sm border border-gray-200 sticky top-24">
+              <div className="lg:w-1/3 lg:h-full lg:overflow-y-auto scrollbar-none">
+                <div className="bg-white p-8 sm:p-10 rounded-[32px] shadow-sm border border-gray-200">
                   <h3 className="text-2xl font-bold text-black mb-8">Popular Tips</h3>
                   
                   <div className="flex flex-col gap-3">

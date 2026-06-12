@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import illustration from '../assets/contact-illustration.png';
+const illustration = "https://ik.imagekit.io/manish07/assets/contact-illustration.png";
 
 const CONCERNS = ["Plans", "Facilities", "Membership", "Events Info", "Others"];
 

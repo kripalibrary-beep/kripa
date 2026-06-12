@@ -1,5 +1,5 @@
 import React from 'react';
-import libraryBg from "../assets/library-bg.png";
+const libraryBg = "https://ik.imagekit.io/manish07/assets/library-bg.png";
 import { Link } from "react-router-dom";
 
 export default function HeroSection() {

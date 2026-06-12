@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 // Replace with your actual image paths
-import postImg1 from '../../assets/Blog/recentpost1.png';
-import postImg2 from '../../assets/Blog/recentpost2.png';
-import postImg3 from '../../assets/Blog/recentpost3.png';
+const postImg1 = "https://ik.imagekit.io/manish07/assets/Blog/recentpost1.png";
+const postImg2 = "https://ik.imagekit.io/manish07/assets/Blog/recentpost2.png";
+const postImg3 = "https://ik.imagekit.io/manish07/assets/Blog/recentpost3.png";
 
 export default function RecentPosts() {
   const navigate = useNavigate();
@@ -38,7 +38,6 @@ export default function RecentPosts() {
     { label: "Quotes",          path: "/topics/quotes" },
     { label: "Biography",       path: "/topics/biography" },
     { label: "Motivation",      path: "/topics/motivation" },
-    { label: "Inspiration",     path: "/topics/inspiration" },
     { label: "Self Development", path: "/topics/self-development" },
   ];
 
