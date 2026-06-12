@@ -321,12 +321,16 @@ export default function MilestonesMemories({ onImageClick }) {
   
   const [activeYear, setActiveYear] = useState("2026");
   const sectionRef = useRef(null);
+  const prevActiveMilestoneId = useRef(activeMilestoneId);
 
   // Auto-scroll to section ref top on detail changes or exits
   useEffect(() => {
-    if (sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (prevActiveMilestoneId.current !== activeMilestoneId) {
+      if (sectionRef.current) {
+        sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
+    prevActiveMilestoneId.current = activeMilestoneId;
   }, [activeMilestoneId]);
 
   // Handle detailed route switching
