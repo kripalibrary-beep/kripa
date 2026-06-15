@@ -2,10 +2,15 @@ import React from 'react';
 const blogBanner = "https://ik.imagekit.io/manish07/assets/Blog/blog-banner.png"; // Replace with your actual banner image path
 import SmartStudyTips from './SmartStudyTips.jsx'; // Import the SmartStudyTips component
 import RecentPosts from './RecentPosts.jsx'; // Import the RecentPosts component
+import SEO from "../SEO";
 
 export default function Blog() {
   return (
     <div className="w-full font-sans overflow-x-hidden">
+      <SEO 
+        title="Blogs & Study Resources | Kripa Library Delhi"
+        description="Read study tips, biographies, motivation, self-development articles, and more. Fuel your UPSC and competitive exam preparation at Kripa Library."
+      />
 
       {/* Hero Banner Section */}
       {/* FIXED: Scaled height responsively from h-[220px] on mobile to h-[440px] on desktops */}

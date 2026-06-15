@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import SEO from '../SEO';
 
 // Blog 1 hero + content images
 const postImg1 = "https://ik.imagekit.io/manish07/assets/Blog/blog1-inner3.png";
@@ -286,6 +287,10 @@ export default function BlogDetail() {
 
   return (
     <div className="w-full min-h-screen bg-white py-10 md:py-16 px-4 sm:px-6 font-sans">
+      <SEO 
+        title={`${blog.title} | Kripa Library`}
+        description={blog.intro}
+      />
       <div className="max-w-[867px] mx-auto">
         <div className="w-full bg-white border border-[#D9D9D9] rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-sm">
           

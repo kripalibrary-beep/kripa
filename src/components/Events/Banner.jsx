@@ -6,6 +6,7 @@ import UpcomingEvent from './UpcomingEvent.jsx';
 import EventCalendar from './EventCalendar.jsx';
 import EventGallery, { galleryImages } from './EventGallery.jsx';
 import MilestonesMemories, { milestoneEvents } from './MilestonesMemories.jsx';
+import SEO from '../SEO';
 
 // Combine all images for unified fullscreen lightbox navigation
 const allLightboxImages = [
@@ -149,6 +150,10 @@ export default function Events() {
 
   return (
     <div className="w-full font-sans overflow-x-hidden bg-white">
+      <SEO 
+        title="Events & Milestones | Kripa Library Mandawali"
+        description="Explore our upcoming events, seminars, achievements, and memorable milestones. Join a vibrant community of exam aspirants in East Delhi."
+      />
 
       {/* 1. Hero banner section with Fusion Festival background image */}
       <EventHero />

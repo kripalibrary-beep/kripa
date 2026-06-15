@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../SEO';
 
 const POEMS = [
   {
@@ -52,6 +53,10 @@ export default function PoemsPage() {
 
   return (
     <div className="w-full min-h-screen bg-gradient-to-b from-slate-50 to-gray-100 py-12 md:py-20 px-4 sm:px-6 font-sans antialiased">
+      <SEO 
+        title="Poems for Inspiration | Kripa Library"
+        description="Browse inspirational poems to refresh your mind and stay positive during intense study hours."
+      />
       <div className="max-w-[1200px] mx-auto">
 
         {/* ── BACK BUTTON ── */}

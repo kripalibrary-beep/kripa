@@ -23,13 +23,12 @@ export default function HeroSection() {
         {/* Text content container */}
         {/* FIXED: Replaced absolute positioning parameters with fluid layout alignment wrappers */}
         <div className="relative z-20 flex flex-col items-center lg:items-start text-center lg:text-left w-full max-w-[90%] sm:max-w-[600px] px-4 lg:ml-[77px] xl:ml-[120px]">
-          
-          <h1 className="text-white font-extrabold leading-[1.1] text-4xl sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[80px] mb-4 tracking-tight">
-            Welcome to<br className="hidden sm:inline" /> KRIPA LIBRARY
+          <h1 className="text-white font-extrabold leading-[1.1] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[60px] mb-4 tracking-tight">
+            Welcome to Kripa Library:<br />East Delhi's Premium Study Space
           </h1>
 
           <p className="text-white/90 text-base sm:text-lg md:text-xl lg:text-[22px] font-normal mb-8 md:mb-10 max-w-md lg:max-w-none">
-            Your peaceful space to Read, Study & Succeed.
+            The best reading room in Mandawali. A premium 24-hour study library in East Delhi, offering a dedicated UPSC study room in Delhi.
           </p>
 
           <Link to="/contact" className="no-underline">

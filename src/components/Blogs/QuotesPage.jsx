@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../SEO';
 
 const QUOTES = [
   {
@@ -45,6 +46,10 @@ export default function QuotesPage() {
 
   return (
     <div className="relative w-full min-h-screen bg-[#F8F9FA] py-16 md:py-24 px-4 sm:px-6 lg:px-8 font-sans overflow-hidden">
+      <SEO 
+        title="Motivational Quotes for Students | Kripa Library"
+        description="A curated list of wisdom, grit, and study quotes to keep you going throughout your preparation."
+      />
       
       {/* ── BACKGROUND GLOWS ── */}
       <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-400/20 rounded-full blur-[120px] pointer-events-none" />

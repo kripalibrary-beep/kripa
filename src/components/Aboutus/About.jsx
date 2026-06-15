@@ -7,10 +7,15 @@ import OurStory from "./OurStory.jsx";
 import StudySpaceImages from "./StudySpaceImages.jsx";
 import TrustedStudySpace from "./TrustedStudySpace.jsx";
 import StudentsAchievements from "./StudentsAchievements.jsx";
+import SEO from "../SEO";
 
 export default function About() {
   return (
     <div className="w-full font-sans overflow-x-hidden">
+      <SEO 
+        title="About Us | Kripa Library - Top Reading Room in East Delhi"
+        description="Learn about Kripa Library, the best study room in East Delhi. Discover our mission to provide the perfect learning environment with 24/7 access and private cabins."
+      />
       {/* Hero Banner Section */}
       {/* Changed fixed h-[440px] to responsive heights: h-[250px] on mobile, h-[350px] on tablet, h-[440px] on laptop */}
       <div className="relative w-full h-[250px] sm:h-[350px] lg:h-[440px] flex items-center justify-center">

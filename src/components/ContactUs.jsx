@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ContactSection from "./ContactSection";
+import SEO from "./SEO";
 const whatsappIcon = "https://ik.imagekit.io/manish07/assets/whatsapp.png";
 const phoneIcon = "https://ik.imagekit.io/manish07/assets/phone.png";
 const instagramIcon = "https://ik.imagekit.io/manish07/assets/instagram.png";
@@ -61,6 +62,10 @@ const ContactUs = () => {
 
     return (
         <div className="w-full min-h-screen bg-[#f7f7f7] font-sans text-gray-900 overflow-x-hidden">
+            <SEO 
+                title="Contact Us | Book Your Private Study Cabin at Kripa Library"
+                description="Get in touch with Kripa Library in Mandawali, East Delhi. Find our location, contact number, or reserve your study seat/cabin today!"
+            />
             
             {/* --- Hero & Graphic Section --- */}
             {/* FIXED: Keeps components stacked on mobile views and displays decorative illustrations side-by-side on desktops */}

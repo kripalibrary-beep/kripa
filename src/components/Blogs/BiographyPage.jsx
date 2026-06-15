@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { IKImage, IKContext } from 'imagekitio-react';
+import SEO from '../SEO';
 
 // ─── ImageKit Config ──────────────────────────────────────────────────────────
 // Replace with your actual ImageKit URL endpoint from your dashboard
@@ -229,11 +230,23 @@ export default function BiographyPage() {
   }, [selectedId]);
 
   if (selected) {
-    return <BiographyDetail bio={selected} onBack={() => setSearchParams({})} />;
+    return (
+      <>
+        <SEO 
+          title={`Biography of ${selected.name} | Kripa Library`}
+          description={`Read the life story, lessons, and inspiring achievements of ${selected.name} at Kripa Library.`}
+        />
+        <BiographyDetail bio={selected} onBack={() => setSearchParams({})} />
+      </>
+    );
   }
 
   return (
     <div className="w-full min-h-screen bg-white py-10 md:py-16 px-4 sm:px-6 font-sans">
+      <SEO 
+        title="Inspiring Biographies | Kripa Library"
+        description="Read biographies of world-renowned personalities, leaders, and role models to boost your willpower."
+      />
       <div className="max-w-[1298px] mx-auto">
 
         {/* Back button */}

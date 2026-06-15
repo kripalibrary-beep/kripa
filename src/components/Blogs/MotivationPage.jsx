@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import SEO from '../SEO';
 
 const MOTIVATIONS = [
   {
@@ -242,11 +243,23 @@ export default function MotivationPage() {
   }, [selectedId]);
 
   if (selected) {
-    return <MotivationDetail motivation={selected} onBack={() => setSearchParams({})} />;
+    return (
+      <>
+        <SEO 
+          title={`Motivation: ${selected.title} | Kripa Library`}
+          description={selected.excerpt}
+        />
+        <MotivationDetail motivation={selected} onBack={() => setSearchParams({})} />
+      </>
+    );
   }
 
   return (
     <div className="w-full min-h-screen bg-[#F8F9FA] py-10 md:py-16 px-4 sm:px-6 font-sans">
+      <SEO 
+        title="Daily Motivation for Exams | Kripa Library"
+        description="Stay motivated for UPSC, SSC, and other competitive exams with powerful articles from Kripa Library."
+      />
       <div className="max-w-[1000px] mx-auto">
         
         {/* Back button */}

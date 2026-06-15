@@ -47,10 +47,10 @@ export default function PremiumFacilities() {
       {/* ── Heading block ── */}
       <div className="px-4 sm:px-6 md:px-12 mb-8 md:mb-[40px] max-w-7xl mx-auto text-center sm:text-left">
         <h2 className="font-bold text-black leading-tight mb-2 text-3xl sm:text-4xl lg:text-[40px] tracking-tight">
-          Exclusive Premium Facilities
+          Exclusive Premium Facilities: Private Study Cabins & 24/7 Access
         </h2>
         <p className="text-gray-500 text-sm sm:text-base">
-          Focus on your goals, we'll take care of the comfort.
+          Looking for a private study cabin near me? Focus on your goals, we'll take care of the comfort.
         </p>
       </div>
 

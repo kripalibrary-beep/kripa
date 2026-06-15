@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import SEO from '../SEO';
 
 const SELF_DEVELOPMENTS = [
   {
@@ -250,11 +251,23 @@ export default function SelfDevelopmentPage() {
   }, [selectedId]);
 
   if (selected) {
-    return <SelfDevelopmentDetail post={selected} onBack={() => setSearchParams({})} />;
+    return (
+      <>
+        <SEO 
+          title={`Self-Development: ${selected.title} | Kripa Library`}
+          description={selected.excerpt}
+        />
+        <SelfDevelopmentDetail post={selected} onBack={() => setSearchParams({})} />
+      </>
+    );
   }
 
   return (
     <div className="w-full min-h-screen bg-[#F8F9FA] py-10 md:py-16 px-4 sm:px-6 font-sans">
+      <SEO 
+        title="Self Development & Success Tips | Kripa Library"
+        description="Learn life skills, time management, and habits that will help you achieve success in your exams and career."
+      />
       <div className="max-w-[1000px] mx-auto">
         
         {/* Back button */}

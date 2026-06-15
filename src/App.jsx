@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import SEO from "./components/SEO";
 import HeroSection from "./components/HeroSection";
 import WhyChooseUs from "./components/WhyChooseUs";
 import ExplorePlans from "./components/plan/ExplorePlans";
@@ -35,6 +36,29 @@ function ScrollToTop() {
 
   return null;
 }
+// ── FAQ SCHEMA FOR HOME PAGE SEO ──
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is Kripa Library open 24 hours?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we offer round-the-clock access with our 24-Hour Plan, as well as a dedicated Night Plan from 09 PM to 06 AM for students who prefer studying after dark."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a safe place to keep my books and laptop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, lockers are available to keep your belongings secure. Our premises are also monitored by 24/7 CCTV surveillance."
+      }
+    }
+  ]
+};
 
 function App() {
   return (
@@ -55,6 +79,11 @@ function App() {
               path="/"
               element={
                 <>
+                  <SEO 
+                    title="Kripa Library | Premium 24/7 Reading Room in Mandawali, East Delhi"
+                    description="Looking for a peaceful study space in East Delhi? Kripa Library in Mandawali offers 24/7 access, private AC cabins, high-speed Wi-Fi, and a safe environment for UPSC and exam prep. Book your seat today!"
+                    schema={faqSchema}
+                  />
                   <HeroSection />
                   <WhyChooseUs />
                   <ExplorePlans />
