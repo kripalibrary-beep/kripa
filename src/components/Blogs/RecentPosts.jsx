@@ -30,6 +30,13 @@ export default function RecentPosts() {
       date: "15-08-2026",
       text: "Preparing for competitive exams requires more than just hard work — it requires deep focus. Even the best study plan can fail if you're constantly distracted.........",
       image: postImg3
+    },
+    {
+      id: 4,
+      title: "UPSC 2026 Prep: Why Reading Rooms in East Delhi are the Secret Weapon for Success",
+      date: "17-06-2026",
+      text: "Preparing for the UPSC Civil Services Examination requires a long-term strategy, consistency, and a highly disciplined environment. Learn why a local study room in East Delhi can make all the difference.........",
+      image: postImg1
     }
   ];
 

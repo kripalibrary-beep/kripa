@@ -21,6 +21,7 @@ import BiographyPage from './components/Blogs/BiographyPage';
 import QuotesPage from './components/Blogs/QuotesPage';
 import MotivationPage from './components/Blogs/MotivationPage';
 import SelfDevelopmentPage from './components/Blogs/SelfDevelopmentPage';
+import AboutUsSEOContent from "./components/AboutUsSEOContent";
 
 
 
@@ -60,6 +61,54 @@ const faqSchema = {
   ]
 };
 
+// ── LIBRARY BUSINESS SCHEMA FOR HOME PAGE SEO ──
+const librarySchema = {
+  "@context": "https://schema.org",
+  "@type": "Library",
+  "@id": "https://www.kripalibrary.com/#library",
+  "name": "Kripa Library & Reading Room",
+  "image": "https://ik.imagekit.io/manish07/assets/logo2.png",
+  "url": "https://www.kripalibrary.com/",
+  "telephone": "+917838004416",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "168, Ground floor, Mandawali Pandit Mohalla, Front of Durga Mandir",
+    "addressLocality": "East Delhi",
+    "addressRegion": "Delhi",
+    "postalCode": "110092",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "28.6253",
+    "longitude": "77.2913"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  ],
+  "sameAs": [
+    "https://www.instagram.com/kripa_library/",
+    "https://www.facebook.com/p/Kripa-Library-Mandawali-61581788636814/",
+    "https://www.youtube.com/@KripaLibrary"
+  ]
+};
+
+const combinedSchema = [librarySchema, faqSchema];
+
 function App() {
   return (
     <Router>
@@ -82,13 +131,14 @@ function App() {
                   <SEO 
                     title="Kripa Library | Premium 24/7 Reading Room in Mandawali, East Delhi"
                     description="Looking for a peaceful study space in East Delhi? Kripa Library in Mandawali offers 24/7 access, private AC cabins, high-speed Wi-Fi, and a safe environment for UPSC and exam prep. Book your seat today!"
-                    schema={faqSchema}
+                    schema={combinedSchema}
                   />
                   <HeroSection />
                   <WhyChooseUs />
                   <ExplorePlans />
                   <PremiumFacilities />
                   <ContactSection />
+                  <AboutUsSEOContent />
                   <Testimonials />
                 </>
               }
