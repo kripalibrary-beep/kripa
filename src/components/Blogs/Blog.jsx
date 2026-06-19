@@ -28,7 +28,7 @@ export default function Blog() {
 
         {/* Centered Text Container */}
         {/* FIXED: Added horizontal safety padding (px-4) so text doesn't touch the edges of phone glass */}
-        <div className="relative z-10 w-full max-w-[610px] px-4 flex flex-col items-center gap-2 text-center">
+        <div className="relative z-10 w-full max-w-[610px] px-4 flex flex-col items-center gap-2 text-center mt-8 sm:mt-12 lg:mt-16">
           {/* FIXED: Sized typography dynamically from text-3xl to text-5xl/6xl */}
           <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight">
             Our Blog

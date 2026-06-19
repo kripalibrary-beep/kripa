@@ -12,11 +12,11 @@ export default function OurStory() {
         {/* Left Side: Text Content */}
         {/* Removed strict max-width constraints on smaller viewports so text flows naturally */}
         <div className="w-full lg:max-w-[599px] flex flex-col">
-          <h2 className="text-3xl md:text-4xl lg:text-[42px] font-bold text-black mb-4 md:mb-6 text-center lg:text-left">
+          <h2 className="text-4xl md:text-5xl lg:text-[52px] font-bold text-black mb-6 md:mb-8 text-center lg:text-left">
             Our Story
           </h2>
           
-          <p className="text-black text-sm md:text-base leading-relaxed mb-6 md:mb-10 text-justify lg:text-left">
+          <p className="text-black text-base md:text-lg lg:text-[20px] leading-relaxed mb-8 md:mb-12 text-justify lg:text-left">
             We started this library with a simple purpose: to solve the real problems students
             face while studying. Lack of a peaceful environment, distractions at home, and the
             need to travel far for a good study space inspired us to take this step. Our aim was
@@ -25,15 +25,15 @@ export default function OurStory() {
           </p>
 
           {/* Vision Section */}
-          <div className="mb-6 md:mb-8">
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-2 md:mb-3">
+          <div className="mb-8 md:mb-10">
+            <div className="flex items-center justify-center lg:justify-start gap-3 mb-3 md:mb-4">
               {/* Triangle Icon */}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="black" className="shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="black" className="shrink-0">
                 <path d="M2 22L22 22L2 2V22Z" />
               </svg>
-              <h3 className="text-base md:text-lg font-semibold text-black">Vision</h3>
+              <h3 className="text-xl md:text-2xl lg:text-[28px] font-bold text-black">Vision</h3>
             </div>
-            <p className="text-black text-sm md:text-base leading-relaxed text-justify lg:text-left">
+            <p className="text-black text-base md:text-lg lg:text-[20px] leading-relaxed text-justify lg:text-left">
               Our vision is to build a focused culture in Mandawali with equal opportunities for all.
               We aim to create a community driven by dedication and success.
             </p>
@@ -41,14 +41,14 @@ export default function OurStory() {
 
           {/* Mission Section */}
           <div className="mb-8 lg:mb-0">
-            <div className="flex items-center justify-center lg:justify-start gap-2 mb-2 md:mb-3">
+            <div className="flex items-center justify-center lg:justify-start gap-3 mb-3 md:mb-4">
               {/* Triangle Icon */}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="black" className="shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="black" className="shrink-0">
                 <path d="M2 22L22 22L2 2V22Z" />
               </svg>
-              <h3 className="text-base md:text-lg font-semibold text-black">Mission</h3>
+              <h3 className="text-xl md:text-2xl lg:text-[28px] font-bold text-black">Mission</h3>
             </div>
-            <p className="text-black text-sm md:text-base leading-relaxed text-justify lg:text-left">
+            <p className="text-black text-base md:text-lg lg:text-[20px] leading-relaxed text-justify lg:text-left">
               Our mission is to provide affordable, high-quality facilities in a quiet and distraction-free
               environment, making study spaces accessible close to home.
             </p>

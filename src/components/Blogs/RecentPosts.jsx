@@ -49,7 +49,7 @@ export default function RecentPosts() {
   ];
 
   return (
-    <section className="w-full bg-white py-10 md:py-16 px-4 sm:px-6 font-sans overflow-x-hidden">
+    <section className="w-full bg-white pt-2 pb-10 md:pt-4 md:pb-16 px-4 sm:px-6 font-sans overflow-x-hidden relative z-10 -mt-6 md:-mt-12">
       {/* Main Container */}
       <div className="max-w-[1298px] mx-auto flex flex-col lg:flex-row justify-between gap-10 lg:gap-[50px] xl:gap-[78px]">
 

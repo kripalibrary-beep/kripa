@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 // Existing Imports
 const acImg = "https://ik.imagekit.io/manish07/assets/facilities/ac.png";
@@ -7,13 +8,13 @@ const lockerImg = "https://ik.imagekit.io/manish07/assets/facilities/lockmain.jp
 const waterImg = "https://ik.imagekit.io/manish07/assets/facilities/water1.png";
 
 // New Image Imports
-const beverageImg = "https://ik.imagekit.io/manish07/assets/Beverages.png";
-const lunchImg = "https://ik.imagekit.io/manish07/assets/lunch.png";
-const premiumSeatsImg = "https://ik.imagekit.io/manish07/assets/Premium Seats.png";
-const spaciousImg = "https://ik.imagekit.io/manish07/assets/Spacious.jpg";
-const newspaperImg = "https://ik.imagekit.io/manish07/assets/Newspaper.png";
-const restImg = "https://ik.imagekit.io/manish07/assets/bed.png";
-const cctvImg = "https://ik.imagekit.io/manish07/assets/Rest.png"; // Note: Check if this asset path should be cctv.png or security.png!
+import beverageImg from "../assets/Beverages.png";
+import lunchImg from "../assets/lunch.png";
+import premiumSeatsImg from "../assets/Premium Seats.png";
+import spaciousImg from "../assets/Spacious.jpg";
+import newspaperImg from "../assets/Newspaper.png";
+import restImg from "../assets/bed.png";
+import cctvImg from "../assets/Rest.png";
 
 const facilitiesData = [
   { title: "Fully Air Conditioned", desc: "Separate AC for each wing.", img: acImg },
@@ -31,13 +32,48 @@ const facilitiesData = [
 
 export default function PremiumFacilities() {
   const scrollContainerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  // Optional manual scroll trigger for a navigation control mechanism if needed later
-  const handleScrollNext = () => {
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+      const scrollFraction = scrollLeft / (scrollWidth - clientWidth || 1);
+      const totalItems = facilitiesData.length;
+      let newIndex = Math.round(scrollFraction * (totalItems - 1));
+      if (newIndex < 0) newIndex = 0;
+      if (newIndex >= totalItems) newIndex = totalItems - 1;
+      setActiveIndex(newIndex);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener('scroll', handleScroll, { passive: true });
+      return () => container.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  const scrollTo = (index) => {
     if (scrollContainerRef.current) {
       const container = scrollContainerRef.current;
-      const cardWidth = container.firstChild.offsetWidth + 24; // Card width + gap spacing
-      container.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      const card = container.children[index + 1]; // +1 to skip <style> tag
+      if (card) {
+        const offset = card.offsetLeft - container.offsetLeft;
+        container.scrollTo({ left: offset, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleNext = () => {
+    if (activeIndex < facilitiesData.length - 1) {
+      scrollTo(activeIndex + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (activeIndex > 0) {
+      scrollTo(activeIndex - 1);
     }
   };
 
@@ -99,20 +135,41 @@ export default function PremiumFacilities() {
             </div>
           ))}
         </div>
+
+        {/* Left/Right Arrow Navigation */}
+        <button 
+          onClick={handlePrev}
+          disabled={activeIndex === 0}
+          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 sm:-translate-x-6 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-gray-100 text-gray-800 hover:text-blue-600 hover:scale-110 disabled:opacity-0 disabled:pointer-events-none transition-all duration-300"
+          aria-label="Previous facility"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+        <button 
+          onClick={handleNext}
+          disabled={activeIndex === facilitiesData.length - 1}
+          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 sm:translate-x-6 z-10 w-10 h-10 sm:w-12 sm:h-12 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center shadow-lg border border-gray-100 text-gray-800 hover:text-blue-600 hover:scale-110 disabled:opacity-0 disabled:pointer-events-none transition-all duration-300"
+          aria-label="Next facility"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
       </div>
 
-      {/* Optional: Navigation Helper Button */}
-      {/* <div className="flex justify-center mt-4 px-4">
-        <button 
-          className="flex items-center gap-2.5 bg-white border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-all active:scale-95 text-gray-700 text-sm font-bold px-7 py-2.5 rounded-full shadow-sm"
-          onClick={handleScrollNext}
-        >
-          <span>See More Facilities</span>
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </button>
-      </div> */}
+      {/* Pagination Dots */}
+      <div className="flex justify-center items-center gap-2 mt-8 md:mt-12 px-4">
+        {facilitiesData.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollTo(index)}
+            aria-label={`Go to facility ${index + 1}`}
+            className={`transition-all duration-300 rounded-full ${
+              activeIndex === index 
+                ? "w-8 sm:w-10 h-2 sm:h-2.5 bg-blue-600" 
+                : "w-2 sm:w-2.5 h-2 sm:h-2.5 bg-gray-300 hover:bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
 
     </section>
   );

@@ -3,7 +3,7 @@ import deepaImg from '../../assets/Student-achivement/WhatsApp Image 2026-06-10 
 
 export default function StudentsAchievements() {
   return (
-    <section className="w-full bg-white py-10 md:py-16 px-4 font-sans relative">
+    <section className="w-full bg-white pt-0 pb-10 md:pt-0 md:pb-16 px-4 font-sans relative -mt-4 md:-mt-8">
       <div className="w-full max-w-[1000px] mx-auto relative z-10">
         
         <div className="flex flex-col items-center text-center gap-3 mb-12 md:mb-16 mx-auto max-w-[600px]">

@@ -22,6 +22,7 @@ import QuotesPage from './components/Blogs/QuotesPage';
 import MotivationPage from './components/Blogs/MotivationPage';
 import SelfDevelopmentPage from './components/Blogs/SelfDevelopmentPage';
 import AboutUsSEOContent from "./components/AboutUsSEOContent";
+import FAQSection from "./components/FAQSection";
 
 
 
@@ -140,6 +141,7 @@ function App() {
                   <ContactSection />
                   <AboutUsSEOContent />
                   <Testimonials />
+                  <FAQSection />
                 </>
               }
             />

@@ -9,6 +9,7 @@ export default {
       fontFamily: {
         // This sets Inter as the primary sans font
         sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        dancing: ['"Dancing Script"', 'cursive'],
       },
     },
   },

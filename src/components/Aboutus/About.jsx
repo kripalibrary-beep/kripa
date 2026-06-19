@@ -32,7 +32,7 @@ export default function About() {
 
         {/* Centered Title */}
         {/* Adjusted text sizing: text-3xl on small mobile, text-4xl on mobile, text-5xl on tablet, text-6xl on laptop */}
-        <h1 className="relative z-10 text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-center px-4">
+        <h1 className="relative z-10 text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wide text-center px-4 font-dancing">
           About Us
         </h1>
 
