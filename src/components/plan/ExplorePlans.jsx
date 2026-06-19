@@ -45,9 +45,12 @@ const PlanCard = ({ duration, unit, title, description, price, timeLabel, icon, 
         {title === 'Single Day Pass' ? <span className="text-gray-400 text-xs"> / Day</span> : <span className="text-gray-400 text-xs"> / Month</span>}
       </div>
       
-      <button className={`w-full py-3 rounded-xl text-sm font-semibold text-white transition-transform active:scale-95 ${colors.btnBg}`}>
+      <a 
+        href="https://www.focusdesk.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
+        className={`w-full py-3 rounded-xl text-sm font-semibold text-white transition-transform active:scale-95 flex items-center justify-center no-underline ${colors.btnBg}`}
+      >
         Choose This Plan
-      </button>
+      </a>
     </div>
   </div>
 );
@@ -236,10 +239,13 @@ export default function ExplorePlans() {
               <p className="text-blue-200 text-[10px] uppercase tracking-widest font-bold mb-0.5">Save Up To</p>
               <p className="text-5xl font-black mb-4 tracking-tight">20%</p>
               
-              <button className="w-full sm:px-6 py-3 bg-white text-blue-600 rounded-xl font-bold shadow-md hover:bg-blue-50 transition-all active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap text-sm">
+              <a 
+                href="https://www.focusdesk.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
+                className="w-full sm:px-6 py-3 bg-white text-blue-600 rounded-xl font-bold shadow-md hover:bg-blue-50 transition-all active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap text-sm no-underline"
+              >
                 <span>Get Started</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-              </button>
+              </a>
             </div>
           </div>
         </div>

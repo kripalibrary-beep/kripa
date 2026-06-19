@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 
 import libraryBg from "../assets/library-bgg.png";
 
 export default function HeroSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <div className="w-full font-sans">
       <div className="relative w-full min-h-[580px] lg:h-[606px] bg-gradient-to-br from-[#1E3A8A] via-[#3654FF] to-[#6B8DFF] overflow-hidden flex items-center py-12 lg:py-0">
@@ -39,13 +37,13 @@ export default function HeroSection() {
             </p>
 
             {/* Action Call Button */}
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-white text-slate-950 font-bold text-sm sm:text-base px-6 py-3.5 sm:px-8 sm:py-4 rounded-full border-0 hover:bg-slate-50 transition-all shadow-md active:scale-95 cursor-pointer"
+            <a 
+              href="https://www.focusdesk.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
+              className="inline-flex items-center gap-2 bg-white text-slate-950 font-bold text-sm sm:text-base px-6 py-3.5 sm:px-8 sm:py-4 rounded-full border-0 hover:bg-slate-50 transition-all shadow-md active:scale-95 cursor-pointer no-underline"
             >
               Become a Member
               <span className="text-lg leading-none font-bold">→</span>
-            </button>
+            </a>
           </div>
 
           {/* Right Column: Library Rounded Photo Card */}
@@ -68,33 +66,7 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Booking Modal Overlay */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
-          <div className="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh] animate-in fade-in zoom-in-95 duration-200">
-            <div className="flex justify-between items-center p-4 sm:px-6 border-b border-gray-100 bg-gray-50/80">
-              <h3 className="font-bold text-gray-800 text-lg">Book Your Seat</h3>
-              <button 
-                onClick={() => setIsModalOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 hover:bg-red-100 hover:text-red-600 text-gray-600 transition-colors"
-                aria-label="Close"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-              </button>
-            </div>
-            <div className="p-4 sm:p-6 overflow-y-auto flex-1 w-full bg-white">
-              <iframe 
-                src="https://www.focusdesk.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730/book?embed=true" 
-                width="100%" 
-                height="800px" 
-                frameBorder="0" 
-                style={{ border: '1px solid #eee', borderRadius: '12px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}
-                title="Book Your Seat"
-              />
-            </div>
-          </div>
-        </div>
-      )}
+
 
     </div>
   );
