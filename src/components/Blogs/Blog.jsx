@@ -1,6 +1,7 @@
 import React from 'react';
 const blogBanner = "https://ik.imagekit.io/manish07/assets/Blog/blog-banner.png"; // Replace with your actual banner image path
 import SmartStudyTips from './SmartStudyTips.jsx'; // Import the SmartStudyTips component
+import ExamPrepGuides from './ExamPrepGuides.jsx'; // Import the ExamPrepGuides component
 import RecentPosts from './RecentPosts.jsx'; // Import the RecentPosts component
 import SEO from "../SEO";
 
@@ -45,11 +46,15 @@ export default function Blog() {
       <div className="max-w-[1298px] mx-auto px-4 sm:px-6 py-10 md:py-16 space-y-12 md:space-y-16">
         
         <div className="w-full">
-          <SmartStudyTips />
-        </div>
-        
-        <div className="w-full pb-4 md:pb-8">
           <RecentPosts />
+        </div>
+
+        <div className="w-full">
+          <ExamPrepGuides />
+        </div>
+
+        <div className="w-full">
+          <SmartStudyTips />
         </div>
 
       </div>

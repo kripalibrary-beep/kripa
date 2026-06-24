@@ -19,6 +19,8 @@ const postImg3 = "https://ik.imagekit.io/manish07/assets/Blog/blog3-inner1.png";
 const blog3Img1 = "https://ik.imagekit.io/manish07/assets/Blog/blog3-inner1.png";
 const blog3Img2 = "https://ik.imagekit.io/manish07/assets/Blog/blog3-inner2.png";
 
+import postImg5 from '../../assets/Blog/blog/005371cf4ac7194675cc9791dc903cb42a5f525a-1066x1066.avif';
+
 const BLOGS = [
   {
     id: 1,
@@ -336,6 +338,102 @@ const BLOGS = [
       {
         type: "paragraph",
         text: "If you are targeting UPSC 2026 or other competitive exams, invest in a dedicated study space. Kripa Library in Mandawali, East Delhi offers 24/7 access, soundproof environments, and premium cabin seating specifically designed to maximize your exam preparation productivity.",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "The Aliganj Fire Tragedy: Why Student Safety in Commercial Study Spaces Can No Longer Be Ignored",
+    date: "23-06-2026",
+    topic: "Awareness",
+    heroImage: postImg5,
+    intro:
+      "The recent devastating fire in the Aliganj area of Lucknow has sent shockwaves through the student and teaching communities. What started as a regular Monday afternoon for dozens of young aspirants inside a commercial building turned into a horrific nightmare, claiming at least 15 young lives due to severe suffocation and trapping.",
+    sections: [
+      {
+        type: "paragraph",
+        text: "As a platform dedicated to helping students find safe, productive spaces to study, we at librarynear.com are deeply heartbroken by this entirely preventable tragedy. Our deepest condolences go out to the grieving families.",
+      },
+      {
+        type: "paragraph",
+        text: "But beyond grief, this incident demands a hard, urgent conversation about the hidden dangers lurking in the unregulated 'commercial libraries' mushrooming across our cities.",
+      },
+      {
+        type: "heading",
+        text: "The Reality of Commercial 'Learning Spaces'",
+      },
+      {
+        type: "paragraph",
+        text: "In competitive exam hubs, private digital libraries have become essential sanctuaries for students. They offer air conditioning, high-speed Wi-Fi, and a quiet environment to study for hours.",
+      },
+      {
+        type: "paragraph",
+        text: "However, as the Aliganj incident revealed, many of these spaces are death traps operating under the radar:",
+      },
+      {
+        type: "list",
+        items: [
+          "Residential vs. Commercial Violations: The building involved was officially approved only for residential use but was packed with a library, an animation center, a coaching hub, and a gaming zone.",
+          "Single Exit Points: High-density study rooms are frequently crammed into tight spaces with only one narrow staircase, making emergency evacuation impossible.",
+          "Zero Smoke Ventilation: To keep AC rooms quiet and cool, windows are often permanently sealed, blocked by plywood, or covered with soundproofing material. When the fire broke out in the AC duct, toxic smoke had nowhere to go, causing rapid suffocation.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "A Safety Checklist for Students: How to Evaluate Your Study Space",
+      },
+      {
+        type: "paragraph",
+        text: "As students, your focus should be on your exams, not whether the roof over your head is safe. However, until strict enforcement is locked in place, you must audit your own study environments.",
+      },
+      {
+        type: "paragraph",
+        text: "Before paying a monthly fee at a local private library or coaching center, check for these five critical safety factors:",
+      },
+      {
+        type: "numbered",
+        items: [
+          {
+            title: "Are there at least two clear exits?",
+            text: "Never study in a basement or upper floor that relies on a single, narrow staircase. Look for a clearly marked, unobstructed secondary fire exit.",
+          },
+          {
+            title: "Can the windows actually open?",
+            text: "Avoid completely sealed glass structures or rooms where windows are blocked by heavy iron grills that cannot be unlatched from the inside.",
+          },
+          {
+            title: "Are smoke alarms and fire extinguishers visible?",
+            text: "Look around the room. Are there functional smoke detectors on the ceiling? Is there a fire extinguisher nearby, and is the pressure gauge in the green zone?",
+          },
+          {
+            title: "Is the electrical wiring exposed or overloaded?",
+            text: "Air conditioners, dozens of charging laptops, and heavy lighting put immense strain on commercial grids. If you see sparking, loose wires, or frequent trips, report it immediately.",
+          },
+          {
+            title: "Does the building have a Fire NOC?",
+            text: "Don’t be afraid to ask the library owner or manager if they possess a valid Fire Safety No-Objection Certificate (NOC). A legitimate business will have no issue showing it to you.",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        text: "Demanding Accountability",
+      },
+      {
+        type: "paragraph",
+        text: "The government has initiated a high-level Special Investigation Team (SIT) probe and arrested building owners, but administrative action after a disaster cannot bring back lost lives.",
+      },
+      {
+        type: "paragraph",
+        text: "We need a systemic overhaul. Local development authorities must strictly audit every private digital library, coaching institute, and study hall. If a space lacks proper fire escapes, ventilation, or safety clearances, it should not be allowed to operate—period.",
+      },
+      {
+        type: "heading",
+        text: "Final Thought",
+      },
+      {
+        type: "paragraph",
+        text: "To our student community: Your dreams are incredibly important, but your life is irreplaceable. Be vigilant about where you sit down to study. If you notice a library operating under dangerous, cramped conditions, raise your voice, report it to local authorities, and look for a safer space.",
       },
     ],
   },

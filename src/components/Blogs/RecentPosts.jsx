@@ -6,37 +6,18 @@ const postImg1 = "https://ik.imagekit.io/manish07/assets/Blog/recentpost1.png";
 const postImg2 = "https://ik.imagekit.io/manish07/assets/Blog/recentpost2.png";
 const postImg3 = "https://ik.imagekit.io/manish07/assets/Blog/recentpost3.png";
 
+import postImg5 from '../../assets/Blog/blog/005371cf4ac7194675cc9791dc903cb42a5f525a-1066x1066.avif';
+
 export default function RecentPosts() {
   const navigate = useNavigate();
 
   const posts = [
     {
-      id: 1,
-      title: "Building Discipline: The Secret to Exam Success",
-      date: "15-08-2026",
-      text: "Every student feels motivated at the beginning. The real challenge is continuing when motivation disappears. That's where discipline makes the difference.........",
-      image: postImg1
-    },
-    {
-      id: 2,
-      title: "Most Common Mistakes Students Make in Competitive Exams",
-      date: "15-08-2026",
-      text: "Competitive exams are not just a test of knowledge — they are a test of strategy, consistency, and discipline. Many students work hard but still miss success.........",
-      image: postImg2
-    },
-    {
-      id: 3,
-      title: "Silent Study Environment: Why It Matters for Exam Success",
-      date: "15-08-2026",
-      text: "Preparing for competitive exams requires more than just hard work — it requires deep focus. Even the best study plan can fail if you're constantly distracted.........",
-      image: postImg3
-    },
-    {
-      id: 4,
-      title: "UPSC 2026 Prep: Why Reading Rooms in East Delhi are the Secret Weapon for Success",
-      date: "17-06-2026",
-      text: "Preparing for the UPSC Civil Services Examination requires a long-term strategy, consistency, and a highly disciplined environment. Learn why a local study room in East Delhi can make all the difference.........",
-      image: postImg1
+      id: 5,
+      title: "The Aliganj Fire Tragedy: Why Student Safety in Commercial Study Spaces Can No Longer Be Ignored",
+      date: "23-06-2026",
+      text: "The recent devastating fire in the Aliganj area of Lucknow has sent shockwaves through the student and teaching communities...",
+      image: postImg5
     }
   ];
 
@@ -49,12 +30,12 @@ export default function RecentPosts() {
   ];
 
   return (
-    <section className="w-full bg-white pt-2 pb-10 md:pt-4 md:pb-16 px-4 sm:px-6 font-sans overflow-x-hidden relative z-10 -mt-6 md:-mt-12">
+    <section className="w-full bg-white pt-2 pb-4 md:pt-4 md:pb-8 px-4 sm:px-6 font-sans overflow-x-hidden relative z-10">
       {/* Main Container */}
-      <div className="max-w-[1298px] mx-auto flex flex-col lg:flex-row justify-between gap-10 lg:gap-[50px] xl:gap-[78px]">
+      <div className="max-w-[1298px] mx-auto flex flex-col lg:flex-row justify-center gap-10 lg:gap-[50px] xl:gap-[78px]">
 
         {/* Left Column: Recent Posts */}
-        <div className="w-full lg:max-w-[810px] xl:max-w-[867px] flex flex-col">
+        <div className="w-full lg:max-w-[810px] xl:max-w-[867px] flex flex-col mx-auto">
 
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-black mb-6 md:mb-[41px] leading-tight text-center sm:text-left">
             Recent Posts
@@ -112,7 +93,7 @@ export default function RecentPosts() {
           </div>
         </div>
 
-        {/* Right Column: Topics Sidebar */}
+        {/* Right Column: Topics Sidebar
         <div className="w-full lg:w-[320px] xl:w-[353px] shrink-0 mt-4 lg:mt-[81px]">
           <div className="w-full bg-white border border-[#D9D9D9] rounded-[24px] sm:rounded-[30px] p-6 sm:p-8 shadow-sm">
             <h3 className="text-xl sm:text-[24px] font-bold text-black mb-4 sm:mb-6">
@@ -134,6 +115,7 @@ export default function RecentPosts() {
             </ul>
           </div>
         </div>
+        */}
 
       </div>
     </section>
