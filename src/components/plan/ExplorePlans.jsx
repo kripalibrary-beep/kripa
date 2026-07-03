@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Gift } from "lucide-react";
 
 /* --- SVG Icons --- */
@@ -58,7 +58,6 @@ const PlanCard = ({ duration, unit, title, description, price, timeLabel, icon, 
 /* --- Main Layout Component --- */
 export default function ExplorePlans() {
   const scrollContainerRef = useRef(null);
-  const [showPlans, setShowPlans] = useState(false);
 
   const plans = [
     {
@@ -160,24 +159,7 @@ export default function ExplorePlans() {
       `}</style>
       
       <div className="max-w-5xl mx-auto w-full">
-        {!showPlans ? (
-          <div 
-            className="flex flex-col items-center justify-center py-20 cursor-pointer group" 
-            onClick={() => setShowPlans(true)}
-          >
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-500 rounded-full blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-              <Gift className="w-32 h-32 text-blue-600 animate-shake relative z-10 drop-shadow-2xl transition-transform duration-300 group-hover:scale-110" />
-            </div>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mt-10 mb-3 tracking-tight transition-transform duration-300 group-hover:translate-y-1">
-              Unwrap Your Success
-            </h2>
-            <p className="text-gray-500 text-sm md:text-base font-medium animate-pulse">
-              Click the gift box to reveal our exclusive study plans!
-            </p>
-          </div>
-        ) : (
-          <div className="animate-pop-in">
+          <div>
             {/* Header Block */}
             <div className="mb-8 text-center sm:text-left">
               <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2 tracking-tight">
@@ -250,7 +232,6 @@ export default function ExplorePlans() {
           </div>
         </div>
       </div>
-    )}
   </div>
 </section>
   );
