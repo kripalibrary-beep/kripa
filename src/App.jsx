@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import SEO from "./components/SEO";
 import HeroSection from "./components/HeroSection";
 import WhyChooseUs from "./components/WhyChooseUs";
@@ -23,6 +23,8 @@ import MotivationPage from './components/Blogs/MotivationPage';
 import SelfDevelopmentPage from './components/Blogs/SelfDevelopmentPage';
 import AboutUsSEOContent from "./components/AboutUsSEOContent";
 import FAQSection from "./components/FAQSection";
+import AdminPanel from "./components/AdminPanel";
+import Dashboard from "./components/Dashboard";
 
 
 
@@ -110,21 +112,20 @@ const librarySchema = {
 
 const combinedSchema = [librarySchema, faqSchema];
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname === '/admin';
+
   return (
-    <Router>
-      {/* Active Scroll Injection inside routing wrapper context */}
+    <>
       <ScrollToTop />
-
       <div className="w-full overflow-x-hidden flex flex-col min-h-screen bg-white">
+        {/* Render Navbar only if not on admin route */}
+        {!isAdminRoute && <Navbar />}
 
-        {/* Render Navbar OUTSIDE Routes so it appears on every page */}
-        <Navbar />
-
-        {/* Main Content Area (Expands to push footer down if content is short) */}
+        {/* Main Content Area */}
         <div className="flex-grow w-full">
           <Routes>
-            {/* Main Home Page Route */}
             <Route
               path="/"
               element={
@@ -145,8 +146,6 @@ function App() {
                 </>
               }
             />
-
-            {/* Sub-Page Navigation Routing Directives */}
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/about" element={<About />} />
             <Route path="/blogs" element={<Blog />} />
@@ -157,15 +156,26 @@ function App() {
             <Route path="/topics/quotes" element={<QuotesPage />} />
             <Route path="/topics/motivation" element={<MotivationPage />} />
             <Route path="/topics/self-development" element={<SelfDevelopmentPage />} />
-
-
+            <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            
+            <Route path="/login" element={<Navigate to="/" replace />} />
+            <Route path="/register" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
 
-        {/* Render Footer OUTSIDE Routes so it appears on every page */}
-        <Footer />
-
+        {/* Render Footer only if not on admin route */}
+        {!isAdminRoute && <Footer />}
       </div>
+    </>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }

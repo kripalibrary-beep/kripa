@@ -110,7 +110,7 @@ const upcomingEventsData = [
   }
 ];
 
-export default function UpcomingEvent({ onRegisterClick }) {
+export default function UpcomingEvent({ onRegisterClick, registeredEvents = [] }) {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   return (
@@ -193,15 +193,24 @@ export default function UpcomingEvent({ onRegisterClick }) {
                       </div>
                     </div>
                     
-                    <button
-                      onClick={() => onRegisterClick({ eventName: ev.title, date: ev.date, time: ev.time })}
-                      className="w-full py-3.5 bg-white text-gray-900 text-sm sm:text-base font-bold rounded-xl shadow-lg hover:bg-gray-50 hover:shadow-xl hover:-translate-y-0.5 transition-all active:scale-95 flex items-center justify-center gap-2 border border-white"
-                    >
-                      <span>Register Interest</span>
-                      <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </button>
+                    {registeredEvents.includes(ev.title) ? (
+                      <button
+                        onClick={() => alert("You are already registered for this event.")}
+                        className="w-full py-3.5 bg-green-50 text-green-700 text-sm sm:text-base font-bold rounded-xl shadow-md cursor-pointer flex items-center justify-center gap-2 border border-green-200"
+                      >
+                        <span>✓ Already Registered</span>
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => onRegisterClick({ eventName: ev.title, date: ev.date, time: ev.time })}
+                        className="w-full py-3.5 bg-white text-gray-900 text-sm sm:text-base font-bold rounded-xl shadow-lg hover:bg-gray-50 hover:shadow-xl hover:-translate-y-0.5 transition-all active:scale-95 flex items-center justify-center gap-2 border border-white"
+                      >
+                        <span>Register Interest</span>
+                        <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                      </button>
+                    )}
                   </div>
 
                 </div>

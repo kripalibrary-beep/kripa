@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { db } from '../../config/firebaseClient';
+import { collection, query, where, getDocs, addDoc } from 'firebase/firestore';
 
 // Import Modularized Section Components
 import EventHero from './EventHero.jsx';
@@ -18,6 +20,26 @@ export default function Events() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [registeredEvents, setRegisteredEvents] = useState([]);
+
+  const fetchRegisteredEvents = async () => {
+    try {
+      const userRaw = localStorage.getItem("kripa_student_profile");
+      if (userRaw) {
+        const userObj = JSON.parse(userRaw);
+        const q = query(collection(db, 'registrations'), where('email', '==', userObj.email));
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setRegisteredEvents(data.map(reg => reg.eventTitle));
+      }
+    } catch (e) {
+      console.error("Error fetching registrations in Banner.jsx:", e);
+    }
+  };
+
+  useEffect(() => {
+    fetchRegisteredEvents();
+  }, []);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -27,7 +49,8 @@ export default function Events() {
     eventAddress: "",
     date: "",
     time: "",
-    eventName: ""
+    eventName: "",
+    preparingFor: "Other"
   });
 
   const handleInputChange = (e) => {
@@ -49,37 +72,24 @@ export default function Events() {
       return;
     }
 
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 seconds timeout
-
     try {
-      const scriptURL = import.meta.env.VITE_SCRIPT_URL;
-
-      if (!scriptURL) {
-        alert("Configuration error. Please try again later.");
-        clearTimeout(timeoutId);
-        return;
-      }
-
-      const urlEncodedData = new URLSearchParams();
-      Object.keys(formData).forEach((key) => {
-        urlEncodedData.append(key, formData[key]);
-      });
-
-      await fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        signal: controller.signal,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: urlEncodedData.toString(),
-      });
-
-      clearTimeout(timeoutId);
+      const registrationData = {
+        name: `${formData.firstName} ${formData.lastName}`.trim(),
+        email: formData.email,
+        phone: formData.phone,
+        eventId: formData.eventName.toLowerCase().replace(/\s+/g, '-'),
+        eventTitle: formData.eventName,
+        preparingFor: formData.preparingFor,
+        date: formData.date,
+        time: formData.time,
+        createdAt: new Date().toISOString()
+      };
+      
+      await addDoc(collection(db, 'registrations'), registrationData);
 
       setIsModalOpen(false);
       setIsSuccessModalOpen(true);
+      setRegisteredEvents(prev => [...prev, formData.eventName]);
 
       // Clear values out safely
       setFormData({ 
@@ -90,18 +100,13 @@ export default function Events() {
         eventAddress: "168, Ground floor, Mandawali Pandit Mohalla, Delhi - 110092",
         date: "15-08-2026 (Saturday)",
         time: "09:00 AM",
-        eventName: "Independence Day Celebration"
+        eventName: "Independence Day Celebration",
+        preparingFor: "Other"
       });
 
     } catch (error) {
-      clearTimeout(timeoutId);
-      if (error.name === 'AbortError') {
-        console.error("Network request timed out after 30 seconds.");
-        alert("The server is taking a bit longer than usual to respond. Your details might still register, but please check your network connection and try again if it doesn't show up!");
-      } else {
-        console.error("Sheet insertion error:", error);
-        alert("Something went wrong, please try again.");
-      }
+      console.error("Event registration error:", error);
+      alert(error.message || "Something went wrong, please try again.");
     }
   };
 
@@ -135,15 +140,34 @@ export default function Events() {
   }, [lightboxIndex]);
 
   const openRegistrationWithDefaultData = (details) => {
+    const userRaw = localStorage.getItem("kripa_student_profile");
+    if (!userRaw) {
+      // User is not logged in, trigger the auth modal to force login
+      window.dispatchEvent(new CustomEvent('open-auth-modal', { detail: { isSignUp: false } }));
+      return;
+    }
+
+    let storedUser = null;
+    try {
+      storedUser = JSON.parse(userRaw);
+    } catch (e) {
+      console.error(e);
+    }
+
+    const nameParts = storedUser?.name ? storedUser.name.split(" ") : [];
+    const firstName = nameParts[0] || "";
+    const lastName = nameParts.slice(1).join(" ") || "";
+
     setFormData({
-      firstName: "",
-      lastName: "",
-      phone: "",
-      email: "",
+      firstName: firstName,
+      lastName: lastName,
+      phone: storedUser?.phone || "",
+      email: storedUser?.email || "",
       eventAddress: "168, Ground floor, Mandawali Pandit Mohalla, Delhi - 110092",
       date: details?.date && details.date !== "Coming Soon" ? details.date : "15-08-2026 (Saturday)",
       time: details?.time && details.time !== "Stay Tuned" ? details.time : "09:00 AM",
-      eventName: details?.eventName || "Independence Day Celebration"
+      eventName: details?.eventName || "Independence Day Celebration",
+      preparingFor: storedUser?.preparingFor || "Other"
     });
     setIsModalOpen(true);
   };
@@ -159,10 +183,10 @@ export default function Events() {
       <EventHero />
 
       {/* 2. Upcoming event section card with linear gradient and CTA register button */}
-      <UpcomingEvent onRegisterClick={openRegistrationWithDefaultData} />
+      <UpcomingEvent onRegisterClick={openRegistrationWithDefaultData} registeredEvents={registeredEvents} />
 
       {/* 3. Calendar & Event list schedule tracker tabs */}
-      <EventCalendar onRegisterClick={openRegistrationWithDefaultData} />
+      <EventCalendar onRegisterClick={openRegistrationWithDefaultData} registeredEvents={registeredEvents} />
 
       {/* 4. Milestones & Memories section displaying new ImageKit assets (RENDERED BEFORE GALLERY) */}
       <MilestonesMemories onImageClick={(index) => setLightboxIndex(galleryImages.length + index)} />
@@ -187,8 +211,8 @@ export default function Events() {
                   <input type="text" name="firstName" placeholder="e.g. John" value={formData.firstName} onChange={handleInputChange} required className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-blue-500 text-sm" />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs sm:text-sm font-semibold text-gray-700">Last Name</label>
-                  <input type="text" name="lastName" placeholder="e.g. Doe" value={formData.lastName} onChange={handleInputChange} required className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-blue-500 text-sm" />
+                  <label className="text-xs sm:text-sm font-semibold text-gray-700">Last Name (Optional)</label>
+                  <input type="text" name="lastName" placeholder="e.g. Doe" value={formData.lastName} onChange={handleInputChange} className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-blue-500 text-sm" />
                 </div>
               </div>
 
@@ -199,7 +223,7 @@ export default function Events() {
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs sm:text-sm font-semibold text-gray-700">Email Address</label>
-                  <input type="email" name="email" placeholder="e.g. name@gmail.com" value={formData.email} onChange={handleInputChange} required className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-blue-500 text-sm" />
+                  <input type="email" name="email" placeholder="e.g. name@gmail.com" value={formData.email} onChange={handleInputChange} required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address ending in a domain like .com or .in" className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-blue-500 text-sm" />
                 </div>
               </div>
 
@@ -219,9 +243,22 @@ export default function Events() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-1.5">
+               <div className="flex flex-col gap-1.5">
                 <label className="text-xs sm:text-sm font-semibold text-gray-700">Event Name</label>
                 <input type="text" name="eventName" value={formData.eventName} readOnly className="w-full h-11 bg-gray-50 border border-gray-200 text-gray-500 outline-none rounded-xl px-4 text-sm cursor-not-allowed" />
+              </div>
+
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs sm:text-sm font-semibold text-gray-700">Preparing For</label>
+                <select name="preparingFor" value={formData.preparingFor} onChange={handleInputChange} className="w-full h-11 border border-gray-300 rounded-xl px-4 outline-none focus:border-blue-500 text-sm bg-white">
+                  <option value="UPSC">UPSC</option>
+                  <option value="SSC">SSC</option>
+                  <option value="Banking">Banking</option>
+                  <option value="CA/CS">CA/CS</option>
+                  <option value="JEE/NEET">JEE/NEET</option>
+                  <option value="Gate">Gate</option>
+                  <option value="Other">Other</option>
+                </select>
               </div>
 
               <div className="pt-4">

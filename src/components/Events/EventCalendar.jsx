@@ -91,7 +91,7 @@ const monthsConfig2026 = [
 const weekdays = ["SU", "MO", "TU", "WE", "TH", "FR", "SA"];
 
 // High-fidelity chronological events list complete with specific images and layout tags
-const chronologicalEventsList = [
+export const chronologicalEventsList = [
   { 
     id: 1, 
     title: "New Year Celebration", 
@@ -261,7 +261,7 @@ const chronologicalEventsList = [
   }
 ];
 
-export default function EventCalendar({ onRegisterClick }) {
+export default function EventCalendar({ onRegisterClick, registeredEvents = [] }) {
   const [activeTab, setActiveTab] = useState("list"); // "calendar" | "list"
   const [selectedEvent, setSelectedEvent] = useState(null);
   const scrollContainerRef = useRef(null);
@@ -603,18 +603,30 @@ export default function EventCalendar({ onRegisterClick }) {
                 >
                   Close
                 </button>
-                <button 
-                  onClick={() => {
-                    onRegisterClick({ eventName: selectedEvent.title, date: selectedEvent.date, time: selectedEvent.time });
-                    setSelectedEvent(null);
-                  }}
-                  className="px-6 py-2.5 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition-colors flex items-center gap-2"
-                >
-                  Register Now
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
+                {registeredEvents.includes(selectedEvent.title) ? (
+                  <button 
+                    onClick={() => {
+                      alert("You are already registered for this event.");
+                      setSelectedEvent(null);
+                    }}
+                    className="px-6 py-2.5 rounded-xl font-bold text-green-700 bg-green-50 border border-green-200 shadow-sm transition-colors flex items-center gap-2 cursor-pointer"
+                  >
+                    ✓ Already Registered
+                  </button>
+                ) : (
+                  <button 
+                    onClick={() => {
+                      onRegisterClick({ eventName: selectedEvent.title, date: selectedEvent.date, time: selectedEvent.time });
+                      setSelectedEvent(null);
+                    }}
+                    className="px-6 py-2.5 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md transition-colors flex items-center gap-2"
+                  >
+                    Register Now
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
           </div>
