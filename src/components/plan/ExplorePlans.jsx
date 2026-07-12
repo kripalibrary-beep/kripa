@@ -46,7 +46,7 @@ const PlanCard = ({ duration, unit, title, description, price, timeLabel, icon, 
       </div>
       
       <a 
-        href="https://www.focusdesk.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
+        href="https://www.focusx.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
         className={`w-full py-3 rounded-xl text-sm font-semibold text-white transition-transform active:scale-95 flex items-center justify-center no-underline ${colors.btnBg}`}
       >
         Choose This Plan
@@ -222,7 +222,7 @@ export default function ExplorePlans() {
               <p className="text-5xl font-black mb-4 tracking-tight">20%</p>
               
               <a 
-                href="https://www.focusdesk.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
+                href="https://www.focusx.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
                 className="w-full sm:px-6 py-3 bg-white text-blue-600 rounded-xl font-bold shadow-md hover:bg-blue-50 transition-all active:scale-95 flex items-center justify-center gap-2 whitespace-nowrap text-sm no-underline"
               >
                 <span>Get Started</span>

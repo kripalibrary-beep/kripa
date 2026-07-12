@@ -38,7 +38,7 @@ export default function HeroSection() {
 
             {/* Action Call Button */}
             <a 
-              href="https://www.focusdesk.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
+              href="https://www.focusx.in/library/f6cd1770-e936-4457-b2ef-bf17bce9f730"
               className="inline-flex items-center gap-2 bg-white text-slate-950 font-bold text-sm sm:text-base px-6 py-3.5 sm:px-8 sm:py-4 rounded-full border-0 hover:bg-slate-50 transition-all shadow-md active:scale-95 cursor-pointer no-underline"
             >
               Become a Member
